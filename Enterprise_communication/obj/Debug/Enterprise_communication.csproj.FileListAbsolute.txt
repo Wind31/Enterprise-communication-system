@@ -1,0 +1,15 @@
+F:\Enterprise_communication\Enterprise_communication\obj\Debug\Enterprise_communication.csprojAssemblyReference.cache
+F:\Enterprise_communication\Enterprise_communication\obj\Debug\App.g.cs
+F:\Enterprise_communication\Enterprise_communication\obj\Debug\Enterprise_communication_MarkupCompile.cache
+F:\Enterprise_communication\Enterprise_communication\obj\Debug\MainWindow.g.cs
+F:\Enterprise_communication\Enterprise_communication\obj\Debug\Enterprise_communication_MarkupCompile.lref
+F:\Enterprise_communication\Enterprise_communication\bin\Debug\Enterprise_communication.exe.config
+F:\Enterprise_communication\Enterprise_communication\bin\Debug\Enterprise_communication.exe
+F:\Enterprise_communication\Enterprise_communication\bin\Debug\Enterprise_communication.pdb
+F:\Enterprise_communication\Enterprise_communication\obj\Debug\MainWindow.baml
+F:\Enterprise_communication\Enterprise_communication\obj\Debug\Enterprise_communication.g.resources
+F:\Enterprise_communication\Enterprise_communication\obj\Debug\Enterprise_communication.Properties.Resources.resources
+F:\Enterprise_communication\Enterprise_communication\obj\Debug\Enterprise_communication.csproj.GenerateResource.cache
+F:\Enterprise_communication\Enterprise_communication\obj\Debug\Enterprise_communication.csproj.CoreCompileInputs.cache
+F:\Enterprise_communication\Enterprise_communication\obj\Debug\Enterprise_communication.exe
+F:\Enterprise_communication\Enterprise_communication\obj\Debug\Enterprise_communication.pdb
