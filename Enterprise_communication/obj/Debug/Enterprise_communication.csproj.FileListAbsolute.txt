@@ -13,3 +13,9 @@ F:\Enterprise_communication\Enterprise_communication\obj\Debug\Enterprise_commun
 F:\Enterprise_communication\Enterprise_communication\obj\Debug\Enterprise_communication.csproj.CoreCompileInputs.cache
 F:\Enterprise_communication\Enterprise_communication\obj\Debug\Enterprise_communication.exe
 F:\Enterprise_communication\Enterprise_communication\obj\Debug\Enterprise_communication.pdb
+F:\Enterprise_communication\Enterprise_communication\bin\Debug\Enterprise_communication_model.dll
+F:\Enterprise_communication\Enterprise_communication\bin\Debug\Enterprise_communication_model.pdb
+F:\Enterprise_communication\Enterprise_communication\obj\Debug\SelectGroupUser.g.cs
+F:\Enterprise_communication\Enterprise_communication\obj\Debug\SelectGroupUser.baml
+F:\Enterprise_communication\Enterprise_communication\obj\Debug\Enterprise_communication.csproj.CopyComplete
+F:\Enterprise_communication\Enterprise_communication\obj\Debug\App.baml

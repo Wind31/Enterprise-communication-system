@@ -23,16 +23,21 @@ namespace Enterprise_communication
         public MainWindow()
         {
             InitializeComponent();
+            double workHeight = SystemParameters.WorkArea.Height;
+            double workWidth = SystemParameters.WorkArea.Width;
+            this.Top = (workHeight - this.Height)/2;
+            this.Left = (workWidth - this.Width)/2;
             this.departmentTree.ItemsSource = GetTrees(0, GetNodes());//数据绑定
         }
 
         public List<NodeModel> GetNodes()
         {
             List<NodeModel> dplst = new List<NodeModel>(){
-            new NodeModel(){Id=1,Name="人事部",ParentId=0,Avatar=string.Empty,State=string.Empty,Visibility="Collapsed"},
-            new NodeModel(){Id=2,Name="开发部",ParentId=0,Avatar=string.Empty,State=string.Empty,Visibility="Collapsed"},
-            new NodeModel(){Id=3,Name="小李",ParentId=1,Avatar="images\\214743981.jpg",State="在线", Visibility="Visible"},
-            new NodeModel(){Id=4,Name="小王",ParentId=2,Avatar="images\\214743981.jpg",State="离线", Visibility="Visible"},
+            new NodeModel(){Id=1,Name="人事部",ParentId=0,Avatar=string.Empty,State=string.Empty,Visibility1="Visible",Visibility2="Collapsed"},
+            new NodeModel(){Id=2,Name="开发部",ParentId=0,Avatar=string.Empty,State=string.Empty,Visibility1="Visible",Visibility2="Collapsed"},
+            new NodeModel(){Id=3,Name="小李",ParentId=1,Avatar="images\\214743981.jpg",State="在线", Visibility1="Collapsed",Visibility2="Visible"},
+            new NodeModel(){Id=4,Name="小王",ParentId=2,Avatar="images\\214743981.jpg",State="离线", Visibility1="Collapsed",Visibility2="Visible"},
+            new NodeModel(){Id=5,Name="小张",ParentId=1,Avatar="images\\214743981.jpg",State="在线", Visibility1="Collapsed",Visibility2="Visible"},
             };
             return dplst;
         }
@@ -52,6 +57,12 @@ namespace Enterprise_communication
             }
             return mainNodes;
         }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            SelectGroupUser s = new SelectGroupUser();
+            s.ShowDialog();
+        }
     }
     public class NodeModel
     {
@@ -66,7 +77,8 @@ namespace Enterprise_communication
         public int ParentId { get; set; }//父类id
         public string Avatar { get; set; }
         public string State { get; set; }
-        public string Visibility { get; set; } = "Visible";
+        public string Visibility1 { get; set; } = "Visible";
+        public string Visibility2 { get; set; } = "Collapsed";
     }
     
 }

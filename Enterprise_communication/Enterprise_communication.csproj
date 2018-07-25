@@ -54,6 +54,9 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="SelectGroupUser.xaml.cs">
+      <DependentUpon>SelectGroupUser.xaml</DependentUpon>
+    </Compile>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -66,6 +69,10 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="SelectGroupUser.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs">
@@ -104,6 +111,12 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="images\add.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Enterprise_communication_model\Enterprise_communication_model.csproj">
+      <Project>{770ad307-bce3-4251-8c76-5ddeee00f7af}</Project>
+      <Name>Enterprise_communication_model</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
