@@ -1,0 +1,11 @@
+F:\Enterprise_communication\Enterprise_communication_DAL\bin\Debug\Enterprise_communication_DAL.dll
+F:\Enterprise_communication\Enterprise_communication_DAL\bin\Debug\Enterprise_communication_DAL.pdb
+F:\Enterprise_communication\Enterprise_communication_DAL\bin\Debug\Enterprise_communication_model.dll
+F:\Enterprise_communication\Enterprise_communication_DAL\bin\Debug\MySql.Data.dll
+F:\Enterprise_communication\Enterprise_communication_DAL\bin\Debug\Enterprise_communication_model.pdb
+F:\Enterprise_communication\Enterprise_communication_DAL\bin\Debug\MySql.Data.xml
+F:\Enterprise_communication\Enterprise_communication_DAL\obj\Debug\Enterprise_communication_DAL.csprojAssemblyReference.cache
+F:\Enterprise_communication\Enterprise_communication_DAL\obj\Debug\Enterprise_communication_DAL.csproj.CoreCompileInputs.cache
+F:\Enterprise_communication\Enterprise_communication_DAL\obj\Debug\Enterprise_communication_DAL.csproj.CopyComplete
+F:\Enterprise_communication\Enterprise_communication_DAL\obj\Debug\Enterprise_communication_DAL.dll
+F:\Enterprise_communication\Enterprise_communication_DAL\obj\Debug\Enterprise_communication_DAL.pdb
