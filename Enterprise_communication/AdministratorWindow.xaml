@@ -16,7 +16,7 @@
             <RowDefinition Height="*"/>
             <RowDefinition Height="10*"/>
         </Grid.RowDefinitions>
-        <Image Source="images\背景.jpg" Grid.Row="0" Grid.Column="0" Stretch="Fill" Grid.ColumnSpan="10" MinHeight="450" />
+        <Image Source="images\background.jpg" Grid.Row="0" Grid.Column="0" Stretch="Fill" Grid.ColumnSpan="10" MinHeight="450" />
         <Label Content="用户管理" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="White" FontSize="18"/>
 
     </Grid>

@@ -11,6 +11,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using Enterprise_communication_model;
 
 namespace Enterprise_communication
 {
@@ -19,8 +20,7 @@ namespace Enterprise_communication
     /// </summary>
     public partial class SelectGroupUser : Window
     {
-        MainWindow m=new MainWindow();
-        public SelectGroupUser()
+        public SelectGroupUser(MainWindow m)
         {
             InitializeComponent();
             double workHeight = SystemParameters.WorkArea.Height;

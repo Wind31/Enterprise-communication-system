@@ -34,11 +34,11 @@ namespace Enterprise_communication_model
         /// <summary>
         /// 用户头像路径
         /// </summary>
-        public string Avatar { get; set; }
+        public byte[] Avatar { get; set; }
         /// <summary>
         /// 性别
         /// </summary>
-        public bool Gender { get; set; }
+        public int Gender { get; set; }
         /// <summary>
         /// 用户工号
         /// </summary>
@@ -54,7 +54,7 @@ namespace Enterprise_communication_model
         /// <summary>
         /// 用户是否是管理员
         /// </summary>
-        public bool Control{get;set;}
+        public int Control{get;set;}
         /// <summary>
         /// 动态获取用户IP地址
         /// </summary>
@@ -62,10 +62,10 @@ namespace Enterprise_communication_model
         /// <summary>
         /// 注册是否已经审核通过
         /// </summary>
-        public bool Check { get; set; }
+        public int Check { get; set; }
         /// <summary>
         /// 用户是否在线
         /// </summary>
-        public bool State { get; set; }
+        public int State { get; set; }
     }
 }

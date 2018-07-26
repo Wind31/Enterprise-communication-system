@@ -27,8 +27,8 @@ namespace Enterprise_communication
         private void btnRegister_Click(object sender, RoutedEventArgs e)
         {
             RegisterWindow registerWindow = new RegisterWindow();
-            this.Close();
-            registerWindow.ShowDialog();
+            registerWindow.Show();
+            this.Hide();
         }
         //取消
         private void Exit_Click(object sender, RoutedEventArgs e)
@@ -38,7 +38,6 @@ namespace Enterprise_communication
         //登录
         private void Login_Click(object sender, RoutedEventArgs e)
         {
-
         }
     }
 }

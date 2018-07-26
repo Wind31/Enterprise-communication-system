@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using Enterprise_communication_model;
 
 namespace Enterprise_communication
 {
@@ -20,7 +21,7 @@ namespace Enterprise_communication
     /// </summary>
     public partial class MainWindow : Window
     {
-        public MainWindow()
+        public MainWindow(User user)
         {
             InitializeComponent();
             double workHeight = SystemParameters.WorkArea.Height;
@@ -28,6 +29,7 @@ namespace Enterprise_communication
             this.Top = (workHeight - this.Height)/2;
             this.Left = (workWidth - this.Width)/2;
             this.departmentTree.ItemsSource = GetTrees(0, GetNodes());//数据绑定
+            
         }
 
         public List<NodeModel> GetNodes()
@@ -60,7 +62,7 @@ namespace Enterprise_communication
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            SelectGroupUser s = new SelectGroupUser();
+            SelectGroupUser s = new SelectGroupUser(this);
             s.ShowDialog();
         }
     }

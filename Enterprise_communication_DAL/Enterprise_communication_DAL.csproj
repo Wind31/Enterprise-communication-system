@@ -46,6 +46,7 @@
   <ItemGroup>
     <Compile Include="MySqlDbHelper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="UserDAL.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Enterprise_communication_model\Enterprise_communication_model.csproj">

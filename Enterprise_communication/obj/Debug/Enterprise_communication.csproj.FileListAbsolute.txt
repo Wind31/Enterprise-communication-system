@@ -37,3 +37,7 @@ F:\Enterprise_communication\Enterprise_communication\obj\Debug\OneToManyWindow.b
 F:\Enterprise_communication\Enterprise_communication\obj\Debug\OneToOneWindow.baml
 F:\Enterprise_communication\Enterprise_communication\obj\Debug\RegisterWindow.baml
 F:\Enterprise_communication\Enterprise_communication\obj\Debug\UserInf_U.baml
+F:\Enterprise_communication\Enterprise_communication\bin\Debug\Enterprise_communication_DAL.dll
+F:\Enterprise_communication\Enterprise_communication\bin\Debug\MySql.Data.dll
+F:\Enterprise_communication\Enterprise_communication\bin\Debug\Enterprise_communication_DAL.pdb
+F:\Enterprise_communication\Enterprise_communication\bin\Debug\MySql.Data.xml
