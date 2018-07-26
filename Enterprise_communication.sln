@@ -11,6 +11,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Enterprise_communication_BL
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Enterprise_communication_DAL", "Enterprise_communication_DAL\Enterprise_communication_DAL.csproj", "{2D450656-8C62-4DF3-9581-3E7E863675DF}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Enterprise_communication_BLLTests", "Enterprise_communication_BLLTests\Enterprise_communication_BLLTests.csproj", "{41F00530-A2B2-4FF8-AA96-F90273EF60CD}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Enterprise_communication_DALTests", "Enterprise_communication_DALTests\Enterprise_communication_DALTests.csproj", "{736967EF-49D6-4591-AFE2-50798AF641A1}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +37,14 @@ Global
 		{2D450656-8C62-4DF3-9581-3E7E863675DF}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2D450656-8C62-4DF3-9581-3E7E863675DF}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2D450656-8C62-4DF3-9581-3E7E863675DF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{41F00530-A2B2-4FF8-AA96-F90273EF60CD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{41F00530-A2B2-4FF8-AA96-F90273EF60CD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{41F00530-A2B2-4FF8-AA96-F90273EF60CD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{41F00530-A2B2-4FF8-AA96-F90273EF60CD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{736967EF-49D6-4591-AFE2-50798AF641A1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{736967EF-49D6-4591-AFE2-50798AF641A1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{736967EF-49D6-4591-AFE2-50798AF641A1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{736967EF-49D6-4591-AFE2-50798AF641A1}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

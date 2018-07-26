@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{2D450656-8C62-4DF3-9581-3E7E863675DF}</ProjectGuid>
+    <ProjectGuid>{736967EF-49D6-4591-AFE2-50798AF641A1}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Enterprise_communication_DAL</RootNamespace>
-    <AssemblyName>Enterprise_communication_DAL</AssemblyName>
+    <RootNamespace>Enterprise_communication_DALTests</RootNamespace>
+    <AssemblyName>Enterprise_communication_DALTests</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -30,11 +30,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="MySql.Data">
-      <HintPath>..\mysql-connector-net-6.10.7\MySql.Data.dll</HintPath>
-    </Reference>
     <Reference Include="System" />
-    <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -44,17 +40,17 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="MySqlDbHelper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Enterprise_communication_DAL\Enterprise_communication_DAL.csproj">
+      <Project>{2d450656-8c62-4df3-9581-3e7e863675df}</Project>
+      <Name>Enterprise_communication_DAL</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Enterprise_communication_model\Enterprise_communication_model.csproj">
       <Project>{770ad307-bce3-4251-8c76-5ddeee00f7af}</Project>
       <Name>Enterprise_communication_model</Name>
     </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <WCFMetadata Include="Connected Services\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

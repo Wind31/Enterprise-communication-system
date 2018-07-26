@@ -113,6 +113,10 @@
     <Resource Include="images\add.png" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Enterprise_communication_BLL\Enterprise_communication_BLL.csproj">
+      <Project>{990dd393-27de-4227-a2b3-82dee2287cdb}</Project>
+      <Name>Enterprise_communication_BLL</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Enterprise_communication_model\Enterprise_communication_model.csproj">
       <Project>{770ad307-bce3-4251-8c76-5ddeee00f7af}</Project>
       <Name>Enterprise_communication_model</Name>
