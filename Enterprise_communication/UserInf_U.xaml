@@ -1,0 +1,80 @@
+﻿<Window x:Class="Enterprise_communication.UserInf_U"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Enterprise_communication"
+        mc:Ignorable="d"
+        Title="UserInf_U" Height="650" Width="450" ResizeMode="CanMinimize">
+    <Grid>
+        <Label x:Name="Labe1" Content="用户名" Margin="52,19.667,7.667,0"
+               Grid.Row="1" Height="40" VerticalAlignment="Top" FontSize="20"/>
+        <Label x:Name="Labe2" Content="ID" Margin="52,19.667,7.667,0"
+               Grid.Row="2" Height="40" VerticalAlignment="Top" FontSize="20"/>
+        <Label x:Name="Labe3" Content="姓   名" Margin="52,19.667,7.667,0"
+               Grid.Row="3" Height="40" VerticalAlignment="Top" FontSize="20"/>
+        <Label x:Name="Labe4" Content="部   门" Margin="52,19.667,7.667,0"
+               Grid.Row="4" Height="40" VerticalAlignment="Top" FontSize="20"/>
+        <Label x:Name="Labe5" Content="职   位" Margin="52,19.667,7.667,0"
+               Grid.Row="5" Height="40" VerticalAlignment="Top" FontSize="20"/>
+        <Label x:Name="Labe6" Content="手机号" Margin="52,19.667,7.667,0"
+               Grid.Row="6" Height="40" VerticalAlignment="Top" FontSize="20"/>
+        <Label x:Name="Labe7" Content="权   限" Margin="52,19.667,7.667,0"
+               Grid.Row="7" Height="40" VerticalAlignment="Top" FontSize="20"/>
+        <Label x:Name="Labe8" Content="x" Margin="12.333,19.667,232.333,0"
+               Grid.Row="1" Height="40" VerticalAlignment="Top" FontSize="20" 
+               Grid.Column="1" Grid.ColumnSpan="2"/>
+        <Label x:Name="Labe9" Content="x" Margin="12.333,19.667,232.333,0"
+               Grid.Row="2" Height="40" VerticalAlignment="Top" FontSize="20" 
+               Grid.Column="1" Grid.ColumnSpan="2"/>
+        <Label x:Name="Labe10" Content="x" Margin="12.333,19.667,232.333,0"
+               Grid.Row="3" Height="40" VerticalAlignment="Top" FontSize="20" 
+               Grid.Column="1" Grid.ColumnSpan="2"/>
+        <Label x:Name="Labe11" Content="x" Margin="12.333,19.667,232.333,0"
+               Grid.Row="4" Height="40" VerticalAlignment="Top" FontSize="20" 
+               Grid.Column="1" Grid.ColumnSpan="2"/>
+        <Label x:Name="Labe12" Content="x" Margin="12.333,19.667,232.333,0"
+               Grid.Row="5" Height="40" VerticalAlignment="Top" FontSize="20" 
+               Grid.Column="1" Grid.ColumnSpan="2"/>
+        <Label x:Name="Labe13" Content="x" Margin="12.333,19.667,232.333,0"
+               Grid.Row="6" Height="40" VerticalAlignment="Top" FontSize="20" 
+               Grid.Column="1" Grid.ColumnSpan="2"/>
+        <Label x:Name="Labe14" Content="x" Margin="12.333,19.667,232.333,0"
+               Grid.Row="7" Height="40" VerticalAlignment="Top" FontSize="20" 
+               Grid.Column="1" Grid.ColumnSpan="2"/>
+        <Button x:Name="Button1" Content="修改信息" Margin="10"
+                Grid.Column="1" HorizontalAlignment="Left" 
+                Grid.Row="8" VerticalAlignment="Top" 
+                Width="148" Height="41" ButtonBase.Click="Button_Click1"
+                Background="#FF4FA6E7" Foreground="White" FontSize="20" Grid.ColumnSpan="2"/>
+        <Button x:Name="Button3" 
+            Content="" Grid.Column="0" 
+            HorizontalAlignment="Left" Height="100"  Width="100" 
+            VerticalAlignment="Top" Visibility="Hidden"/>
+        <Image x:Name="image2" Source="bgphoto.jpg" Stretch="UniformToFill"
+            HorizontalAlignment="Left" Height="100" VerticalAlignment="Top"
+               Width="450" Grid.ColumnSpan="3"/>
+        <Image x:Name="image1" Source="bqb3.jpg"
+               Height="100"  Width="100" Grid.Column="0" 
+               HorizontalAlignment="Left" VerticalAlignment="Center" Grid.RowSpan="1"/>
+        <Grid.RowDefinitions>
+            <RowDefinition Height ="* "></RowDefinition>
+            <RowDefinition Height ="Auto"></RowDefinition>
+            <RowDefinition Height ="Auto"></RowDefinition>
+            <RowDefinition Height ="Auto"></RowDefinition>
+            <RowDefinition Height ="Auto"></RowDefinition>
+            <RowDefinition Height ="Auto"></RowDefinition>
+            <RowDefinition Height ="Auto"></RowDefinition>
+            <RowDefinition Height ="Auto"></RowDefinition>
+            <RowDefinition Height ="*"></RowDefinition>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width=" Auto" MinWidth="150.667"></ColumnDefinition>
+            <ColumnDefinition Width="Auto" MinWidth="158"></ColumnDefinition>
+            <ColumnDefinition Width="Auto" MinWidth="356.667"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+
+
+
+    </Grid>
+</Window>

@@ -1,0 +1,91 @@
+﻿<Window x:Class="Enterprise_communication.AddUser"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Enterprise_communication"
+        mc:Ignorable="d"
+        Title="添加用户" Height="650" Width="450" ResizeMode="CanMinimize">
+    <Grid>
+        <Grid ShowGridLines = "False"></Grid>
+
+        <Label x:Name="Label1" Content="用户名" Margin="52,20,10,0"
+               Grid.Row="1" Height="30" Width="100" VerticalAlignment="Top" FontSize="18"/>
+        <Label x:Name="Label2" Content=" ID" Margin="52,20,10,0"
+               Grid.Row="2" Height="30"  Width="100" VerticalAlignment="Top" FontSize="18"/>
+        <Label x:Name="Label3" Content="姓   名" Margin="52,20,10,0"
+               Grid.Row="3" Height="30" VerticalAlignment="Top" FontSize="18"/>
+        <Label x:Name="Label4" Content="部   门" Margin="52,20,10,0"
+               Grid.Row="4" Height="40" VerticalAlignment="Top" FontSize="20"/>
+        <Label x:Name="Label5" Content="职   位" Margin="52,20,10,0"
+               Grid.Row="5" Height="40" VerticalAlignment="Top" FontSize="20"/>
+        <Label x:Name="Label6" Content="手机号" Margin="52,20,10,0"
+               Grid.Row="6" Height="40" VerticalAlignment="Top" FontSize="20"/>
+        <Label x:Name="Label7" Content="权   限" Margin="52,20,10,0" 
+               Grid.Row="7" Height="40" VerticalAlignment="Top" FontSize="20"/>
+        <Image x:Name="image2" Source="bgphoto.jpg" Stretch="UniformToFill"
+            HorizontalAlignment="Left" Height="100" VerticalAlignment="Top"
+               Width="450" Grid.ColumnSpan="4"/>
+        <Image x:Name="image1" Source="bqb3.jpg" Stretch="UniformToFill"
+               Height="100" Width="100" 
+               HorizontalAlignment="Left" VerticalAlignment="Top" />
+        <Button x:Name="Button3" 
+            Content="" Grid.Column="0" 
+            HorizontalAlignment="Left" Height="100"  Width="100" 
+            VerticalAlignment="Top" Visibility="Hidden"/>
+        <Button x:Name="Button1" Content="添加用户"
+                Grid.Row="8" Grid.Column="0"   MinHeight="30" MinWidth="15" MaxHeight="30" MaxWidth="100"
+                FontSize="20" Background="#FF4FA6E7" Foreground="White"
+                />
+        <Button x:Name="Button2" Content="取  消"
+                Grid.Row="8"  MinHeight="30" MinWidth="15" MaxHeight="30" MaxWidth="100"
+                FontSize="20"  Background="#FF4FA6E7" Foreground="White" Grid.Column="2"
+                />
+        <TextBox x:Name="TextBox1" Grid.Column="1" HorizontalAlignment="Left" 
+                 Height="35" Width="200" Margin="10,20,0,0" Grid.Row="1"
+                 TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top"
+                 Grid.ColumnSpan="2"/>
+        <TextBox x:Name="TextBox2" Grid.Column="1" HorizontalAlignment="Left" 
+                 Height="35" Margin="10,20,0,0" Grid.Row="2"
+                 TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top"
+                 Width="200" Grid.ColumnSpan="2"/>
+        <TextBox x:Name="TextBox3" Grid.Column="1" HorizontalAlignment="Left" 
+                 Height="35" Margin="10,20,0,0" Grid.Row="3"
+                 TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top"
+                Width="200" Grid.ColumnSpan="2"/>
+        <TextBox x:Name="TextBox4" Grid.Column="1" HorizontalAlignment="Left" 
+                 Height="35" Margin="10,20,0,0" Grid.Row="4"
+                 TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top"
+                 Width="200" Grid.ColumnSpan="2"/>
+        <TextBox x:Name="TextBox5" Grid.Column="1" HorizontalAlignment="Left" 
+                 Height="35" Margin="10,20,0,0" Grid.Row="5"
+                 TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top"
+                 Width="200" Grid.ColumnSpan="2"/>
+        <TextBox x:Name="TextBox6" Grid.Column="1" HorizontalAlignment="Left" 
+                 Height="35" Margin="10,20,0,0" Grid.Row="6"
+                 TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top"
+                 Width="200" Grid.ColumnSpan="2"/>
+        <TextBox x:Name="TextBox7" Grid.Column="1" HorizontalAlignment="Left" 
+                 Height="35" Margin="10,20,0,0" Grid.Row="7"
+                 TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top"
+                 Width="200" Grid.ColumnSpan="2"/>
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height ="* "></RowDefinition>
+            <RowDefinition Height ="Auto"></RowDefinition>
+            <RowDefinition Height ="Auto"></RowDefinition>
+            <RowDefinition Height ="Auto"></RowDefinition>
+            <RowDefinition Height ="Auto"></RowDefinition>
+            <RowDefinition Height ="Auto"></RowDefinition>
+            <RowDefinition Height ="Auto"></RowDefinition>
+            <RowDefinition Height ="Auto"></RowDefinition>
+            <RowDefinition Height ="*"></RowDefinition>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width=" *"></ColumnDefinition>
+            <ColumnDefinition Width=" *"></ColumnDefinition>
+            <ColumnDefinition Width=" *"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+
+    </Grid>
+</Window>

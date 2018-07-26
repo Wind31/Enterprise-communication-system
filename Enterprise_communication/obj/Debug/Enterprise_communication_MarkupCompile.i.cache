@@ -10,11 +10,11 @@ none
 false
 DEBUG;TRACE
 F:\Enterprise_communication\Enterprise_communication\App.xaml
-2-457100239
+10-437851329
 
-10-588110726
+18-709582312
 152102506025
-MainWindow.xaml;SelectGroupUser.xaml;
+AddUser.xaml;AdministratorWindow.xaml;AlterUserInf_U.xaml;LoginWindow.xaml;MainWindow.xaml;OneToManyWindow.xaml;OneToOneWindow.xaml;RegisterWindow.xaml;SelectGroupUser.xaml;UserInf_U.xaml;
 
-True
+False
 
