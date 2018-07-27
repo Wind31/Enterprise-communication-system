@@ -28,6 +28,7 @@ namespace Enterprise_communication
             sender = user1;
             receiver = user2;
             this.Topmost = true;
+            chattingname.Content = receiver.Name;
         }
 
         private void btnSendFile_Click(object sender, RoutedEventArgs e) //发送文件

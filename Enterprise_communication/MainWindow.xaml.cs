@@ -25,6 +25,8 @@ namespace Enterprise_communication
     public partial class MainWindow : Window
     {
         public User user = new User();
+        DeptBLL deptbll = new DeptBLL();
+        UserBLL userbll = new UserBLL();
         List<Department> DepartmentsList = new List<Department>();
         List<User> UserList = new List<User>();
         List<Group> GroupsList = new List<Group>();
@@ -36,6 +38,12 @@ namespace Enterprise_communication
             double workWidth = SystemParameters.WorkArea.Width;
             this.Top = (workHeight - this.Height) / 2;
             this.Left = (workWidth - this.Width) / 2;
+            RefreshSelf();
+            RefreshUser();
+            RefreshGroup();
+        }
+        private void RefreshSelf()
+        {
             MemoryStream buf = new MemoryStream(user.Avatar);
             BitmapImage bitmapImage = new BitmapImage();
             bitmapImage.BeginInit();
@@ -45,9 +53,10 @@ namespace Enterprise_communication
             buf.Dispose();
             Avatar.Source = bitmapImage;
             Name.Content = user.Name;
-            DeptBLL deptbll = new DeptBLL();
+        }
+        private void RefreshUser()
+        {
             DepartmentsList = deptbll.GetDepartmentsList();
-            UserBLL userbll = new UserBLL();
             UserList = userbll.GetUsersList();
             //this.departmentTree.ItemsSource = GetTrees(0, GetNodes());//数据绑定
             foreach (Department d in DepartmentsList)
@@ -56,7 +65,7 @@ namespace Enterprise_communication
                 item.Header = d.Name;
                 foreach (User u in UserList)
                 {
-                    if (u.Deptid != d.Id||u.Id==user.Id)
+                    if (u.Deptid != d.Id || u.Id == user.Id)
                         continue;
                     Button button = new Button();
                     StackPanel stack1 = new StackPanel();
@@ -97,14 +106,16 @@ namespace Enterprise_communication
                 }
                 departmentTree.Items.Add(item);
             }
-            RefreshGroup();
         }
         private void RefreshGroup()
         {
-            for (int i = 1; i < GroupList.Items.Count; i++)
+            for (int i = GroupList.Items.Count-1; i >=1; i--)
+            {
                 GroupList.Items.RemoveAt(i);
+            }
+                
             GroupBLL groupbll = new GroupBLL();
-            GroupsList = groupbll.GetGroupList();
+            GroupsList = groupbll.GetGroupListByUserId(user.Id);
             foreach (Group p in GroupsList)
             {
                 Image groupimage = new Image();
@@ -122,7 +133,8 @@ namespace Enterprise_communication
                 groupbutton.Background = Brushes.White;
                 groupbutton.Content = groupstack;
                 groupbutton.Margin = new Thickness(10);
-                groupbutton.Name = p.Name;
+                groupbutton.Name = "no_"+p.Id.ToString();
+                groupbutton.MouseDoubleClick += GroupChat_Click;
                 GroupList.Items.Add(groupbutton);
             }
         }
@@ -230,14 +242,23 @@ namespace Enterprise_communication
             Button button = (Button)sender;
             Group group = null;
             GroupBLL bll = new GroupBLL();
-            bll.(button.Name, out user2);
-            if (user2 == null)
+            bll.GetGroupByID(Convert.ToInt32(button.Name.Split('_')[1]),out group);
+            if (group== null)
             {
-                MessageBox.Show("此用户已被删除!");
+                MessageBox.Show("此群已被删除!");
                 return;
             }
-            OneToOne one = new OneToOne(user, user2);
-            one.Show();
+            OneToManyWindow onetomany = new OneToManyWindow(group);
+            onetomany.Show();
+        }
+
+
+        private void SelfInfo_Click(object sender, RoutedEventArgs e)
+        {
+            UserInfo userInfo = new UserInfo(user);
+            userInfo.ShowDialog();
+            userbll.GetUserByUsername(user.Username,out user);
+            RefreshSelf();
         }
     }
     //public class NodeModel

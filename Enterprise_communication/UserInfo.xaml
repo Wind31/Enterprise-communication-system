@@ -1,11 +1,11 @@
-﻿<Window x:Class="Enterprise_communication.RegisterWindow"
+﻿<Window x:Class="Enterprise_communication.UserInfo"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Enterprise_communication"
         mc:Ignorable="d"
-       Height="600" Width="450" WindowStartupLocation="CenterScreen" WindowStyle="None" ResizeMode="NoResize">
+        Title="个人信息" Height="650" Width="450" ResizeMode="CanMinimize">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="3*"/>
@@ -27,10 +27,10 @@
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
         <Image Source="images\background.jpg" Grid.Row="0" Grid.Column="0" Stretch="Fill"  Grid.ColumnSpan="10" MinHeight="450" />
-        <Label Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="6" Name="lblTopName" Content="企业即时管理系统" HorizontalAlignment="Center"  VerticalAlignment="Center" FontSize="20" Foreground="White"/>
+        <Label Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="6" Name="lblTopName" Content="个人信息" HorizontalAlignment="Center"  VerticalAlignment="Center" FontSize="20" Foreground="White"/>
         <Label Grid.Row="1" Grid.Column="0" Name="userblAvatar" Content="头像：" HorizontalAlignment="Right" Margin="0,0,0,0" VerticalAlignment="Center"/>
         <Image Grid.Row="1" Grid.Column="1" Name="userAvatar"  Source="images\214743981.jpg" HorizontalAlignment="Left" MaxHeight="120" MaxWidth="120"></Image>
-        <Button Grid.Row="1" Grid.Column="2" Content="浏览" MaxHeight="30" VerticalAlignment="Bottom" Click="Choose_Avatar_Click"></Button>
+        <Button Name="ChooseAvatar" Grid.Row="1" Grid.Column="2" Content="浏览" MaxHeight="30" VerticalAlignment="Bottom" Click="Choose_Avatar_Click" Visibility="Collapsed"></Button>
         <Label Grid.Row="2" Grid.Column="0" Name="userblName" Content="用户名：" HorizontalAlignment="Right" Margin="0,0,0,0" VerticalAlignment="Center"/>
         <TextBox Grid.Row="2" Grid.Column="1" Name="userName" HorizontalAlignment="Stretch" MinHeight="25" Margin="5,0,30,0" TextWrapping="Wrap" VerticalAlignment="Center"/>
         <Label Grid.Row="3" Grid.Column="0" Name="numblName" Content="工号：" HorizontalAlignment="Right" Margin="0,0,0,0" VerticalAlignment="Center"/>
@@ -38,25 +38,28 @@
         <Label Grid.Row="4" Grid.Column="0" Name="realblName" Content="姓名：" HorizontalAlignment="Right" Margin="0,0,0,0" VerticalAlignment="Center"/>
         <TextBox Grid.Row="4" Grid.Column="1" Name="realName" HorizontalAlignment="Stretch" MinHeight="25" Margin="5,0,30,0" TextWrapping="Wrap" VerticalAlignment="Center"/>
         <Label Grid.Row="5" Grid.Column="0" Name="depblName" Content="部门：" HorizontalAlignment="Right" Margin="0,0,0,0" VerticalAlignment="Center"/>
-        <ComboBox Grid.Row="5" Grid.Column="1" Name="depName" HorizontalAlignment="Stretch" MinHeight="25" Margin="5,0,30,0" VerticalAlignment="Center"/>
+        <ComboBox Grid.Row="5" Grid.Column="1" Name="depName" HorizontalAlignment="Stretch" MinHeight="25" Margin="5,0,30,0" VerticalAlignment="Center" Visibility="Collapsed"/>
+        <TextBox Grid.Row="5" Grid.Column="1" Name="deptname" HorizontalAlignment="Stretch" MinHeight="25" Margin="5,0,30,0" VerticalAlignment="Center"/>
         <Label Grid.Row="6" Grid.Column="0" Name="posiblName" Content="职位：" HorizontalAlignment="Right" Margin="0,0,0,0" VerticalAlignment="Center"/>
         <TextBox Grid.Row="6" Grid.Column="1" Name="posiName" HorizontalAlignment="Stretch" MinHeight="25" Margin="5,0,30,0" TextWrapping="Wrap" VerticalAlignment="Center"/>
+
         <Label Grid.Row="7" Grid.Column="0" Name="blPhone" Content="手机号：" HorizontalAlignment="Right" Margin="0,0,0,0" VerticalAlignment="Center"/>
         <TextBox Grid.Row="7" Grid.Column="1" Name="pbPhone" HorizontalAlignment="Stretch" Margin="5,0,30,0" VerticalAlignment="Center" MinHeight="25"/>
         <Label Grid.Row="8" Grid.Column="0" Name="blGender" Content="性别：" HorizontalAlignment="Right" Margin="0,0,0,0" VerticalAlignment="Center"/>
-        <StackPanel  Grid.Column="1" Height="35"  Grid.Row="8" Width="268" Grid.ColumnSpan="1" Orientation="Horizontal"  VerticalAlignment="Bottom" HorizontalAlignment="Center"  >
-            <RadioButton Content="男" Name="boy"  GroupName="sex" Margin="5,5,0,0"/>
-            <RadioButton Content="女" Name="girl" GroupName="sex" Margin="35,5,0,0"/>
+        <StackPanel Name="radio" Grid.Column="1" Height="35"  Grid.Row="8" Width="268" Grid.ColumnSpan="1" Orientation="Horizontal"  VerticalAlignment="Bottom" HorizontalAlignment="Center"  Visibility="Collapsed">
+            <RadioButton Content="男" Name="boy"  GroupName="sex" Margin="10,0,0,0"/>
+            <RadioButton Content="女" Name="girl" GroupName="sex" Margin="35,0,0,0.2"/>
         </StackPanel>
-        <Label Grid.Row="9" Grid.Column="0" Name="blPassword" Content="密码：" HorizontalAlignment="Right" Margin="0,0,0,0" VerticalAlignment="Center"/>
-        <PasswordBox Grid.Row="9" Grid.Column="1" Name="pbPwd" HorizontalAlignment="Stretch" Margin="5,0,30,0" VerticalAlignment="Center" MinHeight="25"/>
-        <Label Grid.Row="10" Grid.Column="0" Name="sureblPassword" Content="密码：" HorizontalAlignment="Right" Margin="0,0,0,0" VerticalAlignment="Center"/>
-        <PasswordBox Grid.Row="10" Grid.Column="1" Name="surepbPwd" HorizontalAlignment="Stretch" Margin="5,0,30,0" VerticalAlignment="Center" MinHeight="25"/>
+        <TextBox Grid.Row="8" Grid.Column="1" Name="sex" HorizontalAlignment="Stretch" Margin="5,0,30,0" VerticalAlignment="Center" MinHeight="25"/>
+        <Label Grid.Row="9" Grid.Column="0" Name="blPassword" Content="密码：" HorizontalAlignment="Right" Margin="0,0,0,0" VerticalAlignment="Center" Visibility="Collapsed"/>
+        <PasswordBox Grid.Row="9" Grid.Column="1" Name="pbPwd" HorizontalAlignment="Stretch" Margin="5,0,30,0" VerticalAlignment="Center" MinHeight="25" Visibility="Collapsed"/>
+        <Label Grid.Row="10" Grid.Column="0" Name="sureblPassword" Content="确认密码：" HorizontalAlignment="Right" Margin="0,0,0,0" VerticalAlignment="Center" Visibility="Collapsed"/>
+        <PasswordBox Grid.Row="10" Grid.Column="1" Name="surepbPwd" HorizontalAlignment="Stretch" Margin="5,0,30,0" VerticalAlignment="Center" MinHeight="25" Visibility="Collapsed"/>
         <StackPanel Orientation="Horizontal" Grid.ColumnSpan="5"  Grid.Row="11" Grid.Column="0" HorizontalAlignment="Center" >
-            <Button x:Name="btnLogin" Content="注册" Margin="10,7,40,6.8" VerticalAlignment="Center" MinWidth="75" Background="#FF00ADEF" Foreground="White" IsManipulationEnabled="True" Click="Register_Click"/>
-            <Button x:Name="btnExit" Content="取消" Margin="0,8,10,6.8" VerticalAlignment="Center" MinWidth="75" Background="#FF00A8EB" Foreground="White" Click="btnExit_Click"/>
+            <Button x:Name="ChangeInfo" Content="修改信息" Margin="10,7,40,6.8" VerticalAlignment="Center" MinWidth="75" Background="#FF00ADEF" Foreground="White" IsManipulationEnabled="True" Click="ChangeInfo_Click" />
+            <Button x:Name="Confirm" Content="确认修改" Margin="10,7,40,6.8" VerticalAlignment="Center" MinWidth="75" Background="#FF00ADEF" Foreground="White" IsManipulationEnabled="True" Click="Confirm_Click" Visibility="Collapsed"/>
+            <Button x:Name="btnExit" Content="返回" Margin="0,8,10,6.8" VerticalAlignment="Center" MinWidth="75" Background="#FF00A8EB" Foreground="White" Click="btnExit_Click"/>
         </StackPanel>
-        <TextBox Name="AvatarPath" Visibility="Collapsed" Text="./images/214743981.jpg"></TextBox>
+        <TextBox Name="AvatarPath" Visibility="Collapsed"></TextBox>
     </Grid>
 </Window>
-

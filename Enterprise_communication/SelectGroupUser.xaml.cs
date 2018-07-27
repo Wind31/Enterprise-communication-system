@@ -102,9 +102,12 @@ namespace Enterprise_communication
             }
             users.Add(selfusername);
             GroupBLL bll = new GroupBLL();
-            if (bll.CreatGroup(users, GroupName.Text))
+            int id = bll.CreatGroup(users, GroupName.Text);
+            Group group = null;
+            bll.GetGroupByID(id, out group);
+            if (group!=null)
             {
-                OneToManyWindow onetomany = new OneToManyWindow();
+                OneToManyWindow onetomany = new OneToManyWindow(group);
                 onetomany.Show();
                 this.Close();
             }

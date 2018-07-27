@@ -10,7 +10,7 @@ namespace Enterprise_communication_BLL
 {
     public class GroupBLL
     {
-        public bool CreatGroup(List<string> users, string name)
+        public int CreatGroup(List<string> users, string name)
         {
             UserDAL userdal = new UserDAL();
             List<int> userid = new List<int>();
@@ -21,22 +21,25 @@ namespace Enterprise_communication_BLL
                 userid.Add(tempuser.Id);
             }
             GroupDAL groupdal = new GroupDAL();
-            groupdal.AddGroup(name);
-            Group group = groupdal.GetGroupByName(name);
-            if (group != null)
+            int groupid = groupdal.AddGroup(name);
+            foreach (int id in userid)
             {
-                foreach (int id in userid)
-                {
-                    groupdal.AddUserToGroup(id, group.Id);
-                }
-                return true;
+                if(groupdal.AddUserToGroup(id, groupid)<0)
+                    return -1;
             }
-            return false;
+            return groupid;
         }
         public void GetGroupByID(int id, out Group group)
         {
             GroupDAL dal = new GroupDAL();
-            group = dal.GetGroupByName();
+            group = dal.GetGroupById(id);
+        }
+        public List<Group> GetGroupListByUserId(int userid)
+        {
+            List<Group> list = new List<Group>();
+            GroupDAL dal = new GroupDAL();
+            list = dal.GetGroupsByUserid(userid);
+            return list;
         }
         public List<Group> GetGroupList()
         {

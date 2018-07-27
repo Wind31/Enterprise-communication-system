@@ -11,6 +11,9 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using Enterprise_communication_model;
+using Enterprise_communication_BLL;
+using System.IO;
 
 namespace Enterprise_communication
 {
@@ -19,9 +22,49 @@ namespace Enterprise_communication
     /// </summary>
     public partial class OneToManyWindow : Window
     {
-        public OneToManyWindow()
+        Group group;
+        public OneToManyWindow(Group group)
         {
             InitializeComponent();
+            this.group = group;
+            Chattingname.Content = group.Name;
+            this.Topmost = true;
+
+            List<User> groupmember = new List<User>();
+            UserBLL bll = new UserBLL();
+            groupmember = bll.GetGroupMeber(group.Id);
+            ListBox list = new ListBox();
+            Label label = new Label();
+            label.Content = "成员列表";
+            label.FontSize = 20;
+            //list.Items.Add(label);
+            memberlist.Items.Add(label);
+            foreach (User member in groupmember)
+            {
+                Image image = new Image();
+                MemoryStream ms = new MemoryStream(member.Avatar);
+                BitmapImage bitmap = new BitmapImage();
+                bitmap.BeginInit();
+                bitmap.StreamSource = ms;
+                bitmap.CacheOption = BitmapCacheOption.OnLoad;
+                bitmap.EndInit();
+                ms.Dispose();
+                image.Source = bitmap;
+                Label membername = new Label();
+                StackPanel stack = new StackPanel();
+                image.MinHeight = 30;
+                image.MinWidth = 30;
+                image.MaxHeight = 60;
+                image.MaxWidth = 60;
+                membername.VerticalContentAlignment = VerticalAlignment.Center;
+                membername.Content = member.Name;
+                stack.Orientation = Orientation.Horizontal;
+                stack.Children.Add(image);
+                stack.Children.Add(membername);
+                memberlist.Items.Add(stack);
+                //list.Items.Add(stack);
+            }
+           // memberlist.Items.Add(list);
         }
 
         private void ScrollBar_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)

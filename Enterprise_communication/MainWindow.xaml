@@ -148,7 +148,7 @@
             <StackPanel.Background>
                 <ImageBrush Stretch="Fill" ImageSource="images\background.jpg"/>
             </StackPanel.Background>
-            <Button MaxHeight="120" MaxWidth="120" MinWidth="60" Margin="20">
+            <Button MaxHeight="120" MaxWidth="120" MinWidth="60" Margin="20" Click="SelfInfo_Click">
                 <Image Name="Avatar" Source="images\214743981.jpg" ></Image>
             </Button>
             <StackPanel VerticalAlignment="Center">

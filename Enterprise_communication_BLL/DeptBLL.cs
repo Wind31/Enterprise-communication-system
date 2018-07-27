@@ -17,5 +17,12 @@ namespace Enterprise_communication_BLL
             list = dal.GetAllDepartment();
             return list;
         }
+        public Department GetDepartmentsById(int id)
+        {
+            Department dept = new Department();
+            DeptDAL dal = new DeptDAL();
+            dept = dal.GetDepartmentById(id);
+            return dept;
+        }
     }
 }

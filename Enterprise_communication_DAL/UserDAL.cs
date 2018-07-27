@@ -83,6 +83,27 @@ namespace Enterprise_communication_DAL
             }
             return user;
         }
+        public User GetUserByUserId(int id)
+        {
+            //1 sql语句
+            string sql = "SELECT * FROM en_user WHERE e_id=@userid";
+            MySqlParameter[] param = {
+                                        new MySqlParameter("@userid",MySqlDbType.Int32)
+                                   };
+            param[0].Value = id;
+            //2 执行sql语句
+            MySqlDbHelper db = new MySqlDbHelper();
+            DataTable dt = db.ExecuteDataTable(sql, CommandType.Text, param);
+            //3 关系--》对象     orm --》 ef  nhibernate
+            User user = null;
+            if (dt.Rows.Count > 0)
+            {
+
+                DataRow dr = dt.Rows[0];
+                user = DataRowToUser(dr);
+            }
+            return user;
+        }
         /// <summary>
         /// 更新用户
         /// </summary>
@@ -142,6 +163,29 @@ namespace Enterprise_communication_DAL
                 User user = DataRowToUser(dr);
                 userlist.Add(user);
             }
+            return userlist;
+        }
+        public List<User> GetUsersByGroupId(int id)
+        {
+            string sql = "SELECT e_userid FROM en_usertogroup where e_groupid=@groupid";
+            MySqlParameter[] param = {
+                                        new MySqlParameter("@groupid",MySqlDbType.Int32)
+                                   };
+            param[0].Value = id;
+            //2 执行sql语句
+            MySqlDbHelper db = new MySqlDbHelper();
+            DataTable dt = db.ExecuteDataTable(sql, CommandType.Text, param);
+            //3 关系--》对象
+            List<int> idlist = new List<int>();
+            foreach (DataRow dr in dt.Rows)
+            {
+                //行转化成对象
+                idlist.Add(Convert.ToInt32(dr["e_userid"]));
+            }
+
+            List<User> userlist = new List<User>();
+            foreach(int i in idlist)
+                userlist.Add(GetUserByUserId(i));
             return userlist;
         }
         /// <summary>

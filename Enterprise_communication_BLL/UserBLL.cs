@@ -22,10 +22,17 @@ namespace Enterprise_communication_BLL
             }
             return false;
         }
-        public void GetUserByUsername(string name,out User user)
+        public void GetUserByUsername(string name, out User user)
         {
             UserDAL dal = new UserDAL();
             user = dal.GetUserByLoginName(name);
+        }
+        public bool UpdateUser(User user)
+        {
+            UserDAL dal = new UserDAL();
+            if (dal.UpdateUser(user) < 0)
+                return false;
+            return true;
         }
         public bool Login(string name, string pwd, out User user)
         {
@@ -47,9 +54,10 @@ namespace Enterprise_communication_BLL
         }
         public void Logout(User user)
         {
+            UserDAL dal = new UserDAL();
+            user = dal.GetUserByLoginName(user.Username);
             user.Ipaddress = "0.0.0.0";
             user.State = 0;
-            UserDAL dal = new UserDAL();
             dal.UpdateUser(user);
         }
         public static string GetLocalIp()
@@ -77,6 +85,13 @@ namespace Enterprise_communication_BLL
             List<User> list = new List<User>();
             UserDAL dal = new UserDAL();
             list = dal.GetAllUsers();
+            return list;
+        }
+        public List<User> GetGroupMeber(int id)
+        {
+            UserDAL dal = new UserDAL();
+            List<User> list = new List<User>();
+            list = dal.GetUsersByGroupId(id);
             return list;
         }
 

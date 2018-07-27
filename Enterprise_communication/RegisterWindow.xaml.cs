@@ -65,6 +65,11 @@ namespace Enterprise_communication
                 MessageBox.Show("请选择部门");
                 return;
             }
+            if(boy.IsChecked==false&&girl.IsChecked==false)
+            {
+                MessageBox.Show("请选择性别");
+                return;
+            }
             if (pbPwd.Password!= surepbPwd.Password)
             {
                 MessageBox.Show("两次输入的密码不一致");
@@ -79,8 +84,8 @@ namespace Enterprise_communication
             user.Name = realName.Text;
             user.Username=userName.Text;
             user.Password=surepbPwd.Password;
-            user.Gender=1;
-            user.Phone="13700000000";
+            user.Gender=(boy.IsChecked==true)?1:0;
+            user.Phone= pbPhone.Text;
             user.Position= posiName.Text;
             user.State=0;
             user.Control=0;

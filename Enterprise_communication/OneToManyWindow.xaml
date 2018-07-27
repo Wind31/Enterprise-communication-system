@@ -12,7 +12,6 @@
             <ColumnDefinition Width="1*"/>
             <ColumnDefinition Width="1*"/>
             <ColumnDefinition Width="6*"/>
-
             <ColumnDefinition Width="2*"/>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
@@ -25,8 +24,8 @@
             <RowDefinition Height="1*"/>
             <RowDefinition Height="3*"/>
         </Grid.RowDefinitions>
-        <Image Source="images\背景.jpg" Grid.Row="0" Grid.Column="0" Stretch="Fill" Grid.ColumnSpan="10" MinHeight="450" />
-        <Label Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="6" Name="lblChating" Content="软件研发群" HorizontalAlignment="Center" Margin="0,0,0,0" VerticalAlignment="Center" FontSize="20" Foreground="White"/>
+        <Image Source="images\background.jpg" Grid.Row="0" Grid.Column="0" Stretch="Fill" Grid.ColumnSpan="10" MinHeight="450" />
+        <Label Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="6" Name="Chattingname" Content="软件研发群" HorizontalAlignment="Center" Margin="0,0,0,0" VerticalAlignment="Center" FontSize="20" Foreground="White"/>
         <Button Name="btnCheckRe" Content="查看历史消息" Grid.Row="1" Grid.Column="2" HorizontalAlignment="Center" Margin="0.4,6.8,0,3.2" AutomationProperties.IsColumnHeader="True" BorderBrush="{x:Null}" Foreground="#FF0064B2" Background="{x:Null}" RenderTransformOrigin="0.5,0.511"  />
         <Button Name="btnBack" Content="返回" Grid.Row="0" Grid.Column="0" HorizontalAlignment="Center" Margin="0.4,6.8,0,3.2" AutomationProperties.IsColumnHeader="True" BorderBrush="{x:Null}" Foreground="White" Background="{x:Null}" RenderTransformOrigin="0.5,0.508"  />
         <Border Grid.Row="6" BorderThickness="1" BorderBrush="Gray" Grid.ColumnSpan="4"  Grid.RowSpan="3"/>
@@ -52,8 +51,8 @@
                 </ScrollBar.RenderTransform>
             </ScrollBar>
         </Viewbox>
-        <Viewbox Grid.Row="1" Grid.Column="3" >
-            <Label Content="成员列表" />
-        </Viewbox>
+        <ListBox Grid.Row="1" Grid.Column="3" Grid.RowSpan="5" Name="memberlist" ScrollViewer.VerticalScrollBarVisibility="Auto" ScrollViewer.HorizontalScrollBarVisibility="Auto">
+            <!--<Label Content="成员列表" />-->
+        </ListBox>
     </Grid>
 </Window>
