@@ -36,6 +36,7 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Core" />
@@ -69,8 +70,8 @@
     <Compile Include="OneToManyWindow.xaml.cs">
       <DependentUpon>OneToManyWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="OneToOneWindow.xaml.cs">
-      <DependentUpon>OneToOneWindow.xaml</DependentUpon>
+    <Compile Include="OneToOne.xaml.cs">
+      <DependentUpon>OneToOne.xaml</DependentUpon>
     </Compile>
     <Compile Include="RegisterWindow.xaml.cs">
       <DependentUpon>RegisterWindow.xaml</DependentUpon>
@@ -113,7 +114,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="OneToOneWindow.xaml">
+    <Page Include="OneToOne.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>

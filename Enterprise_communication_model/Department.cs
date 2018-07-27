@@ -19,5 +19,15 @@ namespace Enterprise_communication_model
         /// 部门名称
         /// </summary>
         public string Name { get; set; }
+
+        public Department(int id,string s)
+        {
+            this.Id = id;
+            this.Name = s;
+        }
+        public Department()
+        {
+
+        }
     }
 }

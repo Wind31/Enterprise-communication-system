@@ -26,7 +26,6 @@ F:\Enterprise_communication\Enterprise_communication\obj\Debug\AdministratorWind
 F:\Enterprise_communication\Enterprise_communication\obj\Debug\AlterUserInf_U.g.cs
 F:\Enterprise_communication\Enterprise_communication\obj\Debug\LoginWindow.g.cs
 F:\Enterprise_communication\Enterprise_communication\obj\Debug\OneToManyWindow.g.cs
-F:\Enterprise_communication\Enterprise_communication\obj\Debug\OneToOneWindow.g.cs
 F:\Enterprise_communication\Enterprise_communication\obj\Debug\RegisterWindow.g.cs
 F:\Enterprise_communication\Enterprise_communication\obj\Debug\UserInf_U.g.cs
 F:\Enterprise_communication\Enterprise_communication\obj\Debug\AddUser.baml
@@ -34,10 +33,11 @@ F:\Enterprise_communication\Enterprise_communication\obj\Debug\AdministratorWind
 F:\Enterprise_communication\Enterprise_communication\obj\Debug\AlterUserInf_U.baml
 F:\Enterprise_communication\Enterprise_communication\obj\Debug\LoginWindow.baml
 F:\Enterprise_communication\Enterprise_communication\obj\Debug\OneToManyWindow.baml
-F:\Enterprise_communication\Enterprise_communication\obj\Debug\OneToOneWindow.baml
 F:\Enterprise_communication\Enterprise_communication\obj\Debug\RegisterWindow.baml
 F:\Enterprise_communication\Enterprise_communication\obj\Debug\UserInf_U.baml
 F:\Enterprise_communication\Enterprise_communication\bin\Debug\Enterprise_communication_DAL.dll
 F:\Enterprise_communication\Enterprise_communication\bin\Debug\MySql.Data.dll
 F:\Enterprise_communication\Enterprise_communication\bin\Debug\Enterprise_communication_DAL.pdb
 F:\Enterprise_communication\Enterprise_communication\bin\Debug\MySql.Data.xml
+F:\Enterprise_communication\Enterprise_communication\obj\Debug\OneToOne.g.cs
+F:\Enterprise_communication\Enterprise_communication\obj\Debug\OneToOne.baml

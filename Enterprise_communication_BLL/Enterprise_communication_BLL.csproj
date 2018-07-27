@@ -40,8 +40,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DeptBLL.cs" />
+    <Compile Include="GroupBLL.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="RegisterBLL.cs" />
+    <Compile Include="UserBLL.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Enterprise_communication_DAL\Enterprise_communication_DAL.csproj">

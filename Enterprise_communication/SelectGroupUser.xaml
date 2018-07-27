@@ -11,6 +11,7 @@
             <RowDefinition Height="auto"></RowDefinition>
             <RowDefinition Height="*"></RowDefinition>
             <RowDefinition Height="auto"></RowDefinition>
+            <RowDefinition Height="auto"></RowDefinition>
         </Grid.RowDefinitions>
         <StackPanel Grid.Row="0" >
             <StackPanel.Background>
@@ -19,10 +20,10 @@
             <Label FontSize="20" MinHeight="40" Foreground="White" HorizontalAlignment="Center">选择用户</Label>
         </StackPanel>
         <TreeView Grid.Row="1" x:Name="departmentTree" ScrollViewer.HorizontalScrollBarVisibility="Auto" ScrollViewer.VerticalScrollBarVisibility="Auto" Margin="10">
-            <TreeView.ItemTemplate>
+            <!--<TreeView.ItemTemplate>
                 <HierarchicalDataTemplate ItemsSource="{Binding Nodes}">
                     <StackPanel>
-                        <!--<Label Content="{Binding Name}" FontSize="20" Foreground="Black" Visibility="{Binding Visibility1}"></Label>-->
+                        --><!--<Label Content="{Binding Name}" FontSize="20" Foreground="Black" Visibility="{Binding Visibility1}"></Label>--><!--
                         <CheckBox IsChecked="False"  Checked="CheckBox_Checked">
                             <StackPanel Orientation="Horizontal">
                                 <Image MaxHeight="80" MaxWidth="80" Source="{Binding Avatar}"  Visibility="{Binding Visibility2}"></Image>
@@ -34,9 +35,13 @@
                         </CheckBox>
                     </StackPanel>
                 </HierarchicalDataTemplate>
-            </TreeView.ItemTemplate>
+            </TreeView.ItemTemplate>-->
         </TreeView>
-        <Grid Grid.Row="2">
+        <StackPanel Grid.Row="2"  Orientation="Horizontal" HorizontalAlignment="Center" >
+            <Label Content="请输入群名称" MaxWidth="200" MinHeight="30" Margin="5"></Label>
+            <TextBox  Name="GroupName" MaxWidth="250" MinWidth="150" MinHeight="30" Margin="5"></TextBox>
+        </StackPanel>
+        <Grid Grid.Row="3">
             <Grid.RowDefinitions>
                 <RowDefinition></RowDefinition>
                 <RowDefinition></RowDefinition>
@@ -45,10 +50,10 @@
                 <ColumnDefinition></ColumnDefinition>
                 <ColumnDefinition></ColumnDefinition>
             </Grid.ColumnDefinitions>
-            <Button Grid.Row="0" Grid.Column="0" HorizontalAlignment="Center" MinHeight="30" MinWidth="30" Margin="10" Click="Button_Click_1">全选</Button>
+            <Button Grid.Row="0" Grid.Column="0" HorizontalAlignment="Center" MinHeight="30" MinWidth="30" Margin="10" Click="All_Click">全选</Button>
             <StackPanel Grid.Row="1" Grid.ColumnSpan="2" Orientation="Horizontal" HorizontalAlignment="Center">
-                <Button  MinHeight="30" MinWidth="50" Margin="10">确定</Button>
-                <Button  MinHeight="30" MinWidth="50" Margin="10" Click="Button_Click">取消</Button>
+                <Button  MinHeight="30" MinWidth="50" Margin="10" Click="Complete_Click">确定</Button>
+                <Button  MinHeight="30" MinWidth="50" Margin="10" Click="Close_Button_Click">取消</Button>
             </StackPanel>
         </Grid>
     </Grid>

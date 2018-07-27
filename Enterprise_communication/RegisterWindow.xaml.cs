@@ -26,6 +26,13 @@ namespace Enterprise_communication
         public RegisterWindow()
         {
             InitializeComponent();
+            DeptBLL bll = new DeptBLL();
+            List<Department> departments = new List<Department>();
+            departments = bll.GetDepartmentsList();
+            departments.Insert(0,new Department(0, "--请选择分类--"));
+            depName.ItemsSource = departments;
+            depName.DisplayMemberPath = "Name";
+            depName.SelectedIndex = 0;
         }
 
         private void btnExit_Click(object sender, RoutedEventArgs e) //注册取消返回登录界面
@@ -53,6 +60,11 @@ namespace Enterprise_communication
 
         private void Register_Click(object sender, RoutedEventArgs e)
         {
+            if(depName.SelectedIndex == 0)
+            {
+                MessageBox.Show("请选择部门");
+                return;
+            }
             if (pbPwd.Password!= surepbPwd.Password)
             {
                 MessageBox.Show("两次输入的密码不一致");
@@ -62,7 +74,7 @@ namespace Enterprise_communication
             byte[] img = File.ReadAllBytes(AvatarPath.Text);
             //string fileName = System.IO.Path.GetFileNameWithoutExtension(AvatarPath.Text);
             user.Id = 0;
-            user.Deptid=Convert.ToInt32(depName.Text);
+            user.Deptid=Convert.ToInt32(depName.SelectedIndex);
             user.Worknum = Convert.ToInt32(numName.Text);
             user.Name = realName.Text;
             user.Username=userName.Text;
@@ -75,8 +87,8 @@ namespace Enterprise_communication
             user.Ipaddress="0.0.0.0";
             user.Check=0;
             user.Avatar=img;
-            RegisterBLL bll = new RegisterBLL(user);
-            if(bll.Register())
+            UserBLL bll = new UserBLL();
+            if(bll.Register(user))
             {
                 MessageBox.Show("注册成功，等待管理员审核");
                 LoginWindow loginWindow = new LoginWindow();

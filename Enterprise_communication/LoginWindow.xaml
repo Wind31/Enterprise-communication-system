@@ -5,22 +5,23 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Enterprise_communication"
         mc:Ignorable="d"
-        Height="300" Width="450" WindowStartupLocation="CenterScreen" >
+        Height="300" Width="450" WindowStartupLocation="CenterScreen"
+        Closed="Window_Closed">
     <Grid>
         <Viewbox>
             <StackPanel Name="firstSP">
                 <Image Source="Images\head.jpg" Stretch="Fill"  HorizontalAlignment="Center" Height="100" Width="334"></Image>
                 <StackPanel x:Name="secondSp" Orientation="Horizontal" Height="30">
                     <TextBlock TextWrapping="Wrap" Text="用户名：" Height="29" Margin="30,6,0,0" RenderTransformOrigin="1.268,0.243" Foreground="#FF020F15"/>
-                    <TextBox x:Name="UserNumber" Height="22" TextWrapping="Wrap" Width="160" Margin="20,0,0,2" BorderBrush="#FF5C5F60" VerticalAlignment="Bottom"/>
-                    <Button  x:Name="btnRegister" Content="注册" HorizontalAlignment="Right"  Width="45" Margin="20,1,0,0.4" Foreground="#FF0094DA" FontSize="12" BorderBrush="{x:Null}" Background="White" Click="btnRegister_Click"/>
+                    <TextBox x:Name="UserName" Height="22" TextWrapping="Wrap" Width="160" Margin="20,0,0,2" BorderBrush="#FF5C5F60" VerticalAlignment="Bottom"/>
                 </StackPanel>
                 <StackPanel x:Name="thirdSp" Orientation="Horizontal">
                     <TextBlock TextWrapping="Wrap" Text="   密码：" Height="29" Margin="30,6,0,0" RenderTransformOrigin="1.268,0.243" Foreground="#FF02141D"/>
-                    <TextBox x:Name="passWord" Height="24" TextWrapping="Wrap" Width="159" Margin="21,0,0,2" BorderBrush="#FF5C5F60"/>
+                    <PasswordBox x:Name="passWord" Height="24"  Width="159" Margin="21,0,0,2" BorderBrush="#FF5C5F60"/>
+                    <Button  x:Name="btnRegister" Content="注册" HorizontalAlignment="Right"  Width="45" Margin="20,1,0,0.4" Foreground="#FF0094DA" FontSize="12" BorderBrush="{x:Null}" Background="White" Click="btnRegister_Click"/>
                 </StackPanel>
                 <StackPanel Name="fourSP" Orientation="Horizontal" Margin="0,0,0,5" >
-                    <Button  x:Name="Login" Content="登录" VerticalAlignment="Top"  Height="28"  Background="#FF0094DA" BorderBrush="#FFC0DFE6" FontFamily="Microsoft YaHei" Foreground="White" Margin="100,10,0,0" HorizontalAlignment="Left" Width="55" Click="Login_Click"/>
+                    <Button IsDefault="True" x:Name="Login" Content="登录" VerticalAlignment="Top"  Height="28"  Background="#FF0094DA" BorderBrush="#FFC0DFE6" FontFamily="Microsoft YaHei" Foreground="White" Margin="100,10,0,0" HorizontalAlignment="Left" Width="55" Click="Login_Click"/>
                     <Button  x:Name="Exit" Content="退出" VerticalAlignment="Top"  Height="28"  Background="#FF0094DA" BorderBrush="#FFC0DFE6" FontFamily="Microsoft YaHei" Foreground="White" Margin="45,10,0,0" HorizontalAlignment="Left" Width="55" Click="Exit_Click"/>
                 </StackPanel>
             </StackPanel>

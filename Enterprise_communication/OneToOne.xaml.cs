@@ -11,6 +11,8 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using Enterprise_communication_model;
+using Enterprise_communication_BLL;
 
 namespace Enterprise_communication
 {
@@ -19,9 +21,13 @@ namespace Enterprise_communication
     /// </summary>
     public partial class OneToOne : Window
     {
-        public OneToOne()
+        User sender,receiver;
+        public OneToOne(User user1,User user2)
         {
             InitializeComponent();
+            sender = user1;
+            receiver = user2;
+            this.Topmost = true;
         }
 
         private void btnSendFile_Click(object sender, RoutedEventArgs e) //发送文件

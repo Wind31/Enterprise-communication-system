@@ -84,6 +84,67 @@ namespace Enterprise_communication_DAL
             return user;
         }
         /// <summary>
+        /// 更新用户
+        /// </summary>
+        /// <param name="user"></param>
+        /// <returns></returns>
+        public int UpdateUser(User user)
+        {
+            //1.sql语句
+            string sql = "UPDATE en_user SET e_deptid= @deptid, e_worknum= @worknum, e_name= @name, e_username= @username, " +
+                "e_password= @password, e_gender= @gender, e_phone= @phone, e_position= @position, e_state=@state, " +
+                "e_control= @control, e_ipaddress=@ipaddress, e_check= @check, e_avatar=@avatar WHERE e_id=@id";
+
+            MySqlParameter[] param = {
+                                       new MySqlParameter("@deptid",MySqlDbType.Int32),
+                                       new MySqlParameter("@worknum",MySqlDbType.Int32),
+                                       new MySqlParameter("@name",MySqlDbType.VarChar),
+                                       new MySqlParameter("@username",MySqlDbType.VarChar),
+                                       new MySqlParameter("@password",MySqlDbType.VarChar),
+                                       new MySqlParameter("@gender",MySqlDbType.Int16),
+                                       new MySqlParameter("@phone",MySqlDbType.VarChar),
+                                       new MySqlParameter("@position",MySqlDbType.VarChar),
+                                       new MySqlParameter("@state",MySqlDbType.Int16),
+                                       new MySqlParameter("@control",MySqlDbType.Int16),
+                                       new MySqlParameter("@ipaddress",MySqlDbType.VarChar),
+                                       new MySqlParameter("@check",MySqlDbType.Int16),
+                                       new MySqlParameter("@avatar",MySqlDbType.MediumBlob),
+                                       new MySqlParameter("@id",MySqlDbType.Int32)
+                                   };
+            param[0].Value = user.Deptid;
+            param[1].Value = user.Worknum;
+            param[2].Value = user.Name;
+            param[3].Value = user.Username;
+            param[4].Value = user.Password;
+            param[5].Value = user.Gender;
+            param[6].Value = user.Phone;
+            param[7].Value = user.Position;
+            param[8].Value = user.State;
+            param[9].Value = user.Control;
+            param[10].Value = user.Ipaddress;
+            param[11].Value = user.Check;
+            param[12].Value = user.Avatar;
+            param[13].Value = user.Id;
+            MySqlDbHelper db = new MySqlDbHelper();
+            return db.ExecuteNonQuery(sql, CommandType.Text, param);
+        }
+        public List<User> GetAllUsers()
+        {
+            string sql = "SELECT * FROM en_user";
+            //2 执行
+            MySqlDbHelper db = new MySqlDbHelper();
+            DataTable dt = db.ExecuteDataTable(sql);
+            //3 关系--》对象
+            List<User> userlist = new List<User>();
+            foreach (DataRow dr in dt.Rows)
+            {
+                //行转化成对象
+                User user = DataRowToUser(dr);
+                userlist.Add(user);
+            }
+            return userlist;
+        }
+        /// <summary>
         /// 封装成User对象
         /// </summary>
         /// <param name="dr"></param>

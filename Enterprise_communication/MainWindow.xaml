@@ -5,7 +5,8 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Enterprise_communication"
         mc:Ignorable="d"
-        Title="企业即时通信系统" Height="800" Width="460">
+        Title="企业即时通信系统" Height="800" Width="460"
+        Closed="Window_Closed">
     <Window.Resources>
         <Style x:Key="TabControlStyle" TargetType="{x:Type TabControl}">
             <Setter Property="Padding" Value="2"/>
@@ -148,10 +149,10 @@
                 <ImageBrush Stretch="Fill" ImageSource="images\background.jpg"/>
             </StackPanel.Background>
             <Button MaxHeight="120" MaxWidth="120" MinWidth="60" Margin="20">
-                <Image Source="images\214743981.jpg" ></Image>
+                <Image Name="Avatar" Source="images\214743981.jpg" ></Image>
             </Button>
             <StackPanel VerticalAlignment="Center">
-                <Label Content="小明" FontSize="28" Foreground="White" ></Label>
+                <Label Name="Name" Content="" FontSize="28" Foreground="White" ></Label>
                 <Label Content="在线" FontSize="28" Foreground="White" ></Label>
             </StackPanel>
         </StackPanel>
@@ -162,7 +163,7 @@
                     <ColumnDefinition Width="6*"></ColumnDefinition>
                     <ColumnDefinition Width="*"></ColumnDefinition>
                 </Grid.ColumnDefinitions>
-                <TextBox x:Name="TbxInput" BorderThickness="0" Margin="10" Grid.Column="0">
+                <TextBox x:Name="TbxInput" BorderThickness="0" Margin="10" Grid.Column="0" KeyDown="TbxInput_OnKeyDown">
                     <TextBox.Template>
                         <ControlTemplate TargetType="TextBox">
                             <Grid>
@@ -181,7 +182,7 @@
                         </ControlTemplate>
                     </TextBox.Template>
                 </TextBox>
-                <Button x:Name="BtnSearch" Cursor="Hand" Grid.Column="1">
+                <Button x:Name="BtnSearch" Cursor="Hand" Grid.Column="1" Click="BtnSearch_Click">
                     <Button.Template>
                         <ControlTemplate TargetType="Button">
                             <Grid>
@@ -203,40 +204,38 @@
             <TabControl  Style="{StaticResource TabControlStyle}" Foreground="Black"  Background="Transparent" BorderBrush="Transparent" BorderThickness="0" >
                 <TabItem Header="联系人" Style="{StaticResource TabItemStyle}" Cursor="Hand" MinHeight="40"  Margin="5,0" FontSize="40">
                     <TreeView x:Name="departmentTree" ScrollViewer.HorizontalScrollBarVisibility="Auto" ScrollViewer.VerticalScrollBarVisibility="Auto" Margin="10">
-                        <TreeView.ItemTemplate>
+                        <!--<TreeView.ItemTemplate>
                             <HierarchicalDataTemplate ItemsSource="{Binding Nodes}">
                                 <StackPanel>
-                                    <Label Content="{Binding Name}" FontSize="20" Foreground="Black" Visibility="{Binding Visibility1}"  ></Label>
-                                    <Button MinWidth="60" Background="White" BorderThickness="1" Visibility="{Binding Visibility2}" >
-                                    <StackPanel Orientation="Horizontal">
-                                        <Image MaxHeight="80" MaxWidth="80" Source="{Binding Avatar}"  ></Image>
-                                        <StackPanel VerticalAlignment="Center">
-                                            <Label Content="{Binding Name}" FontSize="20" Foreground="Black" ></Label>
-                                        <Label Content="{Binding State}" FontSize="20" Foreground="Black" Visibility="{Binding Visibility}" ></Label>
+                                    <Label  Margin="5" Content="{Binding Name}" FontSize="20" Foreground="Black" Visibility="{Binding Visibility1}"  ></Label>
+                                    <Button BorderThickness="0" MinWidth="60" Background="White" Margin="5" Visibility="{Binding Visibility2}" Click="Chat_Click">
+                                        <StackPanel Orientation="Horizontal">
+                                            <Image MaxHeight="80" MaxWidth="80" Source="{Binding Avatar}"  ></Image>
+                                            <StackPanel VerticalAlignment="Center">
+                                                <Label Content="{Binding Name}" FontSize="20" Foreground="Black" ></Label>
+                                                <Label Content="{Binding State}" FontSize="20" Foreground="Black" Visibility="{Binding Visibility}" ></Label>
+                                            </StackPanel>
                                         </StackPanel>
-                                    </StackPanel>
-                                </Button>
+                                    </Button>
                                 </StackPanel>
                             </HierarchicalDataTemplate>
-                        </TreeView.ItemTemplate>
+                        </TreeView.ItemTemplate>-->
                     </TreeView>
                 </TabItem>
                 <TabItem Header="群聊"   Style="{StaticResource TabItemStyle}" Cursor="Hand" MinHeight="40"  Margin="5,0" FontSize="40">
-                    <ListBox>
-                        <Button Background="White" Margin="10" Click="Button_Click">
+                    <ListBox Name="GroupList">
+                        <Button Name="creategroup" Background="White" Margin="10" Click="Create_Group_Click">
                             <StackPanel Orientation="Horizontal" >
                                 <Image Source="images\add.png" MaxHeight="50" MaxWidth="50"/>
                                 <Label VerticalContentAlignment="Center">发起群聊</Label>
                             </StackPanel>
                         </Button>
-                        <Button Background="White" Margin="10">
+                        <!--<Button Background="White" Margin="10">
                             <StackPanel Orientation="Horizontal" >
                                 <Image Source="images\214743981.jpg" MaxHeight="50" MaxWidth="50"/>
                                 <Label VerticalContentAlignment="Center">研发会议</Label>
                             </StackPanel>
-                        </Button>
-
-
+                        </Button>-->
                     </ListBox>
                 </TabItem>
             </TabControl>

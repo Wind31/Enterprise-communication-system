@@ -36,7 +36,7 @@
         <Label Grid.Row="4" Grid.Column="0" Name="realblName" Content="姓名：" HorizontalAlignment="Right" Margin="0,0,0,0" VerticalAlignment="Center"/>
         <TextBox Grid.Row="4" Grid.Column="1" Name="realName" HorizontalAlignment="Stretch" MinHeight="25" Margin="5,0,30,0" TextWrapping="Wrap" VerticalAlignment="Center"/>
         <Label Grid.Row="5" Grid.Column="0" Name="depblName" Content="部门：" HorizontalAlignment="Right" Margin="0,0,0,0" VerticalAlignment="Center"/>
-        <TextBox Grid.Row="5" Grid.Column="1" Name="depName" HorizontalAlignment="Stretch" MinHeight="25" Margin="5,0,30,0" TextWrapping="Wrap" VerticalAlignment="Center"/>
+        <ComboBox Grid.Row="5" Grid.Column="1" Name="depName" HorizontalAlignment="Stretch" MinHeight="25" Margin="5,0,30,0" VerticalAlignment="Center"/>
         <Label Grid.Row="6" Grid.Column="0" Name="posiblName" Content="职位：" HorizontalAlignment="Right" Margin="0,0,0,0" VerticalAlignment="Center"/>
         <TextBox Grid.Row="6" Grid.Column="1" Name="posiName" HorizontalAlignment="Stretch" MinHeight="25" Margin="5,0,30,0" TextWrapping="Wrap" VerticalAlignment="Center"/>
         <Label Grid.Row="7" Grid.Column="0" Name="blPassword" Content="密码：" HorizontalAlignment="Right" Margin="0,0,0,0" VerticalAlignment="Center"/>
