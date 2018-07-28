@@ -22,6 +22,7 @@ namespace Enterprise_communication
     /// </summary>
     public partial class SelectGroupUser : Window
     {
+        User user;
         string selfusername;
         bool Allchecked = false;
         List<Department> DepartmentsList = new List<Department>();
@@ -33,6 +34,7 @@ namespace Enterprise_communication
             double workWidth = SystemParameters.WorkArea.Width;
             this.Top = (workHeight - this.Height) / 2;
             this.Left = (workWidth - this.Width) / 2;
+            this.user = m.user;
             //this.departmentTree.ItemsSource = m.GetTrees(0, m.GetNodes());//数据绑定
             selfusername = m.user.Username;
             DeptBLL deptbll = new DeptBLL();
@@ -107,7 +109,7 @@ namespace Enterprise_communication
             bll.GetGroupByID(id, out group);
             if (group!=null)
             {
-                OneToManyWindow onetomany = new OneToManyWindow(group);
+                OneToManyWindow onetomany = new OneToManyWindow(group,user);
                 onetomany.Show();
                 this.Close();
             }

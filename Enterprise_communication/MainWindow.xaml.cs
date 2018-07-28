@@ -15,7 +15,9 @@ using System.Windows.Shapes;
 using Enterprise_communication_model;
 using Enterprise_communication_BLL;
 using System.IO;
-
+using System.Net;
+using System.Net.Sockets;
+using System.Threading;
 
 namespace Enterprise_communication
 {
@@ -30,6 +32,7 @@ namespace Enterprise_communication
         List<Department> DepartmentsList = new List<Department>();
         List<User> UserList = new List<User>();
         List<Group> GroupsList = new List<Group>();
+        Socket clientSocket;
         public MainWindow(User user)
         {
             InitializeComponent();
@@ -41,6 +44,75 @@ namespace Enterprise_communication
             RefreshSelf();
             RefreshUser();
             RefreshGroup();
+            ConnectToServer();
+        }
+        public void ConnectToServer()
+        {
+            IPAddress ip = IPAddress.Parse("192.168.103.75");
+            clientSocket = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
+            clientSocket.Connect(new IPEndPoint(ip, 6002));
+            String text = user.Id+ "###" + "success" + "###"+"0"+"###"+user.Id;
+            clientSocket.Send(Encoding.ASCII.GetBytes(text));
+            Thread receiveThread = new Thread(ReceiveMessage);
+            receiveThread.Start(clientSocket);
+        }
+
+        public void ReceiveMessage(object clientSocket)
+        {
+            Socket connection = (Socket)clientSocket;
+            while (true)
+            {
+                try
+                {
+                    //接受数据
+                    byte[] result = new byte[1024];
+                    //通过clientSocket接收数据  
+                    int receiveNumber = connection.Receive(result);
+                    //把接受的数据从字节类型转化为字符类型
+                    String recStr = Encoding.ASCII.GetString(result, 0, receiveNumber);
+                    //[0]发送者ID [1]消息内容 [2]消息类型
+                    string[] StrArr = System.Text.RegularExpressions.Regex.Split(recStr, "###");
+                    if (recStr != string.Empty)
+                    {
+                        if (StrArr[2] != "4")
+                        {
+                            User chatuser = new User();
+                            userbll.GetUserByID(Convert.ToInt32(StrArr[0]), out chatuser);
+                            //MessageBox.Show("收到来自" + chatuser.Name + "的新消息");
+                        }
+                        else
+                        {
+                            GroupBLL groupBLL = new GroupBLL();
+                            List<Group> groups = new List<Group>();
+                            groups= groupBLL.GetGroupListByUserId(user.Id);
+                            foreach(Group g in groups)
+                            {
+                                if (g.Id == Convert.ToInt32(StrArr[0]))
+                                {
+                                    MessageBox.Show("收到来自" + g.Name + "的新消息");
+                                    break;
+                                }
+                            }
+                        }
+                        ConnectToServer();
+                    }
+                    
+                    //    text2.Dispatcher.BeginInvoke(
+
+                    //           new Action(() => { text2.Text += "\r\n" + recStr; }), null);
+
+                    //
+                }
+
+                catch (Exception ex)
+                {
+
+                    //connection.Shutdown(SocketShutdown.Both);
+                    //connection.Close();
+                    break;
+                }
+            }
+
         }
         private void RefreshSelf()
         {
@@ -189,6 +261,7 @@ namespace Enterprise_communication
         {
             UserBLL bll = new UserBLL();
             bll.Logout(user);
+            System.Environment.Exit(0);
             Application.Current.Shutdown();
         }
 
@@ -234,7 +307,7 @@ namespace Enterprise_communication
                 MessageBox.Show("此用户已被删除!");
                 return;
             }
-            OneToOne one = new OneToOne(user, user2);
+            OneToOne one = new OneToOne(user, user2, clientSocket);
             one.Show();
         }
         private void GroupChat_Click(object sender, RoutedEventArgs e)
@@ -248,7 +321,7 @@ namespace Enterprise_communication
                 MessageBox.Show("此群已被删除!");
                 return;
             }
-            OneToManyWindow onetomany = new OneToManyWindow(group);
+            OneToManyWindow onetomany = new OneToManyWindow(group,user);
             onetomany.Show();
         }
 

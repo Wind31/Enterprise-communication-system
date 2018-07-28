@@ -15,6 +15,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Enterprise_communication_BL
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Enterprise_communication_DALTests", "Enterprise_communication_DALTests\Enterprise_communication_DALTests.csproj", "{736967EF-49D6-4591-AFE2-50798AF641A1}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Enterprise_communication_Server", "Enterprise_communication_Server\Enterprise_communication_Server.csproj", "{67EC57EB-747C-4CC8-8BA8-D026C5134FDE}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -45,6 +47,10 @@ Global
 		{736967EF-49D6-4591-AFE2-50798AF641A1}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{736967EF-49D6-4591-AFE2-50798AF641A1}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{736967EF-49D6-4591-AFE2-50798AF641A1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{67EC57EB-747C-4CC8-8BA8-D026C5134FDE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{67EC57EB-747C-4CC8-8BA8-D026C5134FDE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{67EC57EB-747C-4CC8-8BA8-D026C5134FDE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{67EC57EB-747C-4CC8-8BA8-D026C5134FDE}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

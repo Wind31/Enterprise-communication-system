@@ -27,7 +27,12 @@ namespace Enterprise_communication_BLL
             UserDAL dal = new UserDAL();
             user = dal.GetUserByLoginName(name);
         }
-        public bool UpdateUser(User user)
+        public void GetUserByID(int id,out User user)
+        {
+            UserDAL dal = new UserDAL();
+            user = dal.GetUserByUserId(id);
+        }
+       public bool UpdateUser(User user)
         {
             UserDAL dal = new UserDAL();
             if (dal.UpdateUser(user) < 0)
@@ -94,6 +99,6 @@ namespace Enterprise_communication_BLL
             list = dal.GetUsersByGroupId(id);
             return list;
         }
-
+       
     }
 }

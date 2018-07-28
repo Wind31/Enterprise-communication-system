@@ -23,10 +23,12 @@ namespace Enterprise_communication
     public partial class OneToManyWindow : Window
     {
         Group group;
-        public OneToManyWindow(Group group)
+        User msgsender;
+        public OneToManyWindow(Group group,User msgsender)
         {
             InitializeComponent();
             this.group = group;
+            this.msgsender = msgsender;
             Chattingname.Content = group.Name;
             this.Topmost = true;
 
@@ -72,7 +74,7 @@ namespace Enterprise_communication
 
         }
 
-        /*
+        
        private void btnCheckRe_Click(object sender, RoutedEventArgs e) //查看历史消息
        {
 
@@ -88,14 +90,30 @@ namespace Enterprise_communication
 
        }
 
-       private void btnSendMessage_Click_1(object sender, RoutedEventArgs e) //发送消息
+       private void btnSendMessage_Click(object sender, RoutedEventArgs e) //发送消息
        {
-
-       }
+            GroupMessage message = new GroupMessage();
+            message.Content = sendmsg.Text;
+            message.Userid = msgsender.Id;
+            message.Groupid = group.Id;
+            message.Sendtype = 4;
+            message.Sendtime = DateTime.Now;
+            GroupMessageBLL bLL = new GroupMessageBLL();
+            if (!bLL.SendMessage(message))
+            {
+                MessageBox.Show("服务器异常");
+            }
+            else
+            {
+                string msg = "\n" + msgsender.Name + "    " + message.Sendtime.ToString() + "\n" + message.Content + "\n";
+                ShowMessage.AppendText(msg);
+                sendmsg.Text = "";
+            }
+        }
 
        private void btnBack_Click(object sender, RoutedEventArgs e) //返回主界面
        {
 
-       }*/
+       }
     }
 }

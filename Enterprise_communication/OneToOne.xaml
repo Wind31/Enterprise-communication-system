@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Enterprise_communication"
         mc:Ignorable="d"
-        Height="500" Width="700" WindowStartupLocation="CenterScreen" WindowStyle="ThreeDBorderWindow">
+        Height="500" Width="700" WindowStartupLocation="CenterScreen" WindowStyle="ThreeDBorderWindow" ResizeMode="CanMinimize" Closed="Window_Closed">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="1*"/>
@@ -23,21 +23,32 @@
             <RowDefinition Height="1*"/>
             <RowDefinition Height="3*"/>
         </Grid.RowDefinitions>
-        <Image Source="images\background.jpg" Grid.Row="0" Grid.Column="0" Stretch="Fill" Grid.ColumnSpan="10" MinHeight="450" />
-  
-            <Label  Name="chattingname"  Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="6" HorizontalAlignment="Center" Margin="0,0,0,0" VerticalAlignment="Center" FontSize="18" Foreground="White"/>
-            <Button Name="btnCheckRe" Content="查看历史消息" Grid.Row="1" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0.4,6.8,0,3.2" BorderBrush="{x:Null}" Foreground="#FF0064B2" Background="{x:Null}" RenderTransformOrigin="0.5,0.511" />
+        <Image Source="Images\background.jpg" Grid.Row="0" Grid.Column="0" Stretch="Fill" Grid.ColumnSpan="10" MinHeight="450" />
+
+        <Label  Name="chattingname" Content="企业" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="6" HorizontalAlignment="Center" Margin="0,0,0,0" VerticalAlignment="Center" FontSize="18" Foreground="White"/>
+        <Button Name="btnCheckRe" Content="查看历史消息" Grid.Row="1" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0.4,6.8,0,3.2" BorderBrush="{x:Null}" Foreground="#FF0064B2" Background="{x:Null}" RenderTransformOrigin="0.5,0.511" />
         <Button Name="btnBack" Content="返回" Grid.Row="0" Grid.Column="0" HorizontalAlignment="Center" VerticalAlignment="Center"  BorderBrush="{x:Null}" Foreground="White" Background="{x:Null}" Click="btnBack_Click" />
         <Border Grid.Row="6" BorderThickness="1" BorderBrush="Gray" Grid.ColumnSpan="4" Grid.RowSpan="4"/>
-        <Viewbox Grid.Row="6" Grid.Column="0" Grid.ColumnSpan="2" Grid.RowSpan="2" Margin="2,29,0,0.4">
-            <TextBox HorizontalAlignment="Left"  TextWrapping="Wrap" Text="。。。。" VerticalAlignment="Top" MinHeight="69" MinWidth="570"  Background="{x:Null}" Width="612" BorderBrush="{x:Null}" />
-        </Viewbox>
+        <StackPanel Grid.Row="6" Grid.Column="0" Grid.ColumnSpan="2"
+                    Grid.RowSpan="2" Margin="2,29,0,0.4">
+            <ScrollViewer Name="textscroll" Margin="0"  Height="90" Width="590"
+                           HorizontalScrollBarVisibility="Disabled" 
+                          VerticalScrollBarVisibility="Auto"
+                          HorizontalAlignment="Stretch" 
+                          VerticalAlignment="Stretch" >
+                <TextBox x:Name="sendmsg" BorderBrush="{x:Null}"  Margin="10"
+                         HorizontalAlignment="Stretch" VerticalAlignment="Stretch"
+                         TextWrapping="Wrap"  AcceptsReturn="True" BorderThickness="0" 
+                         Width=" 670"
+                         Foreground="Black" FontSize="15"/>
+            </ScrollViewer>
+        </StackPanel>
         <Button Name="btnSendFile" Content="发送文件" Grid.Row="6" Grid.Column="0" HorizontalAlignment="Left" VerticalAlignment="Stretch"  BorderBrush="{x:Null}" Foreground="#FF0E0C0C" Background="{x:Null}" RenderTransformOrigin="2.447,0.306"  Click="btnSendFile_Click"  />
         <Button Name="btnSendFile1" Content="视频会议" Grid.Row="6" Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Stretch" BorderBrush="{x:Null}" Foreground="#FF0E0C0C" Background="{x:Null}" RenderTransformOrigin="0.503,0.5" Click="btnVidio_Click" />
-        <Button Name="btnSendMessage" Content="发送" Grid.Row="7" Grid.Column="2" HorizontalAlignment="Right" VerticalAlignment="Center"  BorderBrush="{x:Null}" Foreground="White" Background="#FF0594D8" Click="btnBack_Click" Margin="0,40.4,0.2,36.4" Width="51" Height="24" />
+        <Button Name="btnSendMessage" Content="发送" Grid.Row="7" Grid.Column="2" HorizontalAlignment="Right" VerticalAlignment="Center"  BorderBrush="{x:Null}" Foreground="White" Background="#FF0594D8" Click="btnSendMessage_Click" Margin="0,40.4,0.2,36.4" Width="51" Height="24" />
 
 
-        <Viewbox Grid.Column="3" Grid.Row="1" HorizontalAlignment="Left" Grid.RowSpan="5" Margin="2.8,7,0,3.6"  >
+        <!--<Viewbox Grid.Column="3" Grid.Row="1" HorizontalAlignment="Left" Grid.RowSpan="5" Margin="2.8,7,0,3.6"  >
             <ScrollBar MinWidth="15" RenderTransformOrigin="0.5,0.5" Height="258" Width="17" >
                 <ScrollBar.RenderTransform>
                     <TransformGroup>
@@ -49,6 +60,32 @@
                 </ScrollBar.RenderTransform>
             </ScrollBar>
         </Viewbox>
+        <Viewbox Grid.Column="0" HorizontalAlignment="Left"
+                    Grid.RowSpan="7" Grid.ColumnSpan="4" Margin="0">
+            <TextBox HorizontalAlignment="Left"  
+                     TextWrapping="Wrap" Text="xxxxxxxxxxxxxxxxxxxxxxxx" 
+                     VerticalAlignment="Top" 
+                     Background="{x:Null}" BorderBrush="{x:Null}"
+                     />
 
+
+
+        </Viewbox>-->
+        <StackPanel Grid.Row="1" HorizontalAlignment="Left" Grid.RowSpan="5" Margin="0" Grid.ColumnSpan="4" MinWidth="695"  >
+            <ScrollViewer Name="msgscroll" Margin="0,50,10,50"  Height="245"
+                          HorizontalScrollBarVisibility="Disabled" 
+                          VerticalScrollBarVisibility="Auto"
+                          HorizontalAlignment="Stretch" 
+                          VerticalAlignment="Stretch">
+
+                <TextBox x:Name="ShowMessage" Background="{x:Null}" 
+                         BorderBrush="{x:Null}"  Margin="10"
+                         HorizontalAlignment="Stretch" VerticalAlignment="Stretch"
+                         TextWrapping="Wrap"  AcceptsReturn="True" BorderThickness="0" 
+                         Width=" 670" 
+                         Foreground="Black" FontSize="15"/>
+
+            </ScrollViewer>
+        </StackPanel>
     </Grid>
 </Window>

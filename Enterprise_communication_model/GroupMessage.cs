@@ -34,7 +34,7 @@ namespace Enterprise_communication_model
         /// <summary>
         /// 消息发送状态，是否成功发送
         /// </summary>
-        public bool State { get; set; }
+        public int State { get; set; }
         /// <summary>
         /// 消息内容
         /// </summary>

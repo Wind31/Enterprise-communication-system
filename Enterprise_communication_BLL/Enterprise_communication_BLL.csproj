@@ -42,6 +42,8 @@
   <ItemGroup>
     <Compile Include="DeptBLL.cs" />
     <Compile Include="GroupBLL.cs" />
+    <Compile Include="GroupMessageBLL.cs" />
+    <Compile Include="MessageBLL.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="UserBLL.cs" />
   </ItemGroup>

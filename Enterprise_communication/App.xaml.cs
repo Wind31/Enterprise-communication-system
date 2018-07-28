@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Configuration;
 using System.Data;
@@ -13,5 +14,6 @@ namespace Enterprise_communication
     /// </summary>
     public partial class App : Application
     {
+
     }
 }
