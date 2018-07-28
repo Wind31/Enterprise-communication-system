@@ -6,86 +6,112 @@
         xmlns:local="clr-namespace:Enterprise_communication"
         mc:Ignorable="d"
         Title="添加用户" Height="650" Width="450" ResizeMode="CanMinimize">
-    <Grid>
-        <Grid ShowGridLines = "False"></Grid>
+    <Grid  Name="gridUser">
+        <Grid ShowGridLines = "True"></Grid>
 
-        <Label x:Name="Label1" Content="用户名" Margin="52,20,10,0"
-               Grid.Row="1" Height="30" Width="100" VerticalAlignment="Top" FontSize="18"/>
-        <Label x:Name="Label2" Content=" ID" Margin="52,20,10,0"
-               Grid.Row="2" Height="30"  Width="100" VerticalAlignment="Top" FontSize="18"/>
-        <Label x:Name="Label3" Content="姓   名" Margin="52,20,10,0"
-               Grid.Row="3" Height="30" VerticalAlignment="Top" FontSize="18"/>
-        <Label x:Name="Label4" Content="部   门" Margin="52,20,10,0"
-               Grid.Row="4" Height="40" VerticalAlignment="Top" FontSize="20"/>
-        <Label x:Name="Label5" Content="职   位" Margin="52,20,10,0"
-               Grid.Row="5" Height="40" VerticalAlignment="Top" FontSize="20"/>
-        <Label x:Name="Label6" Content="手机号" Margin="52,20,10,0"
-               Grid.Row="6" Height="40" VerticalAlignment="Top" FontSize="20"/>
-        <Label x:Name="Label7" Content="权   限" Margin="52,20,10,0" 
-               Grid.Row="7" Height="40" VerticalAlignment="Top" FontSize="20"/>
-        <Image x:Name="image2" Source="bgphoto.jpg" Stretch="UniformToFill"
+        <Label x:Name="Labe2" Content="用户名" Margin="10"
+               Grid.Row="2" Height="40" VerticalAlignment="Top" FontSize="15"/>
+        <Label x:Name="Labe3" Content="工  号" Margin="10"
+               Grid.Row="3" Height="40" VerticalAlignment="Top" FontSize="15"/>
+        <Label x:Name="Labe20" Content="姓   名" Margin="10"
+               Grid.Row="4" Height="40" VerticalAlignment="Top" FontSize="15"></Label>
+        <Label x:Name="Labe4" Content="密   码" Margin="10"
+               Grid.Row="5" Height="40" VerticalAlignment="Top" FontSize="15"/>
+        <Label x:Name="Labe8" Content="确认密码" Margin="10"
+               Grid.Row="6" Height="40" VerticalAlignment="Top" FontSize="15"/>
+        <Label x:Name="Labe5" Content="部   门" Margin="10"
+               Grid.Row="7" Height="40" VerticalAlignment="Top" FontSize="15"/>
+        <Label x:Name="Labe15" Content="职   位" Margin="10"
+               Grid.Row="8" Height="40" VerticalAlignment="Top" FontSize="15"/>
+        <Label x:Name="Labe6" Content="手机号" Margin="10"
+               Grid.Row="9" Height="40" VerticalAlignment="Top" FontSize="15"/>
+        <Label x:Name="Labe7" Content="性  别" Margin="10"
+               Grid.Row="10" Height="40" VerticalAlignment="Top" FontSize="15"/>
+        <Label x:Name="Labe9" Content="权  限" Margin="10"
+               Grid.Row="11" Height="40" VerticalAlignment="Top" FontSize="15"/>
+        <Image x:Name="imageMain" Source="Images\background.jpg" Stretch="UniformToFill"
             HorizontalAlignment="Left" Height="100" VerticalAlignment="Top"
-               Width="450" Grid.ColumnSpan="4"/>
-        <Image x:Name="image1" Source="bqb3.jpg" Stretch="UniformToFill"
-               Height="100" Width="100" 
-               HorizontalAlignment="Left" VerticalAlignment="Top" />
-        <Button x:Name="Button3" 
-            Content="" Grid.Column="0" 
-            HorizontalAlignment="Left" Height="100"  Width="100" 
-            VerticalAlignment="Top" Visibility="Hidden"/>
-        <Button x:Name="Button1" Content="添加用户"
-                Grid.Row="8" Grid.Column="0"   MinHeight="30" MinWidth="15" MaxHeight="30" MaxWidth="100"
-                FontSize="20" Background="#FF4FA6E7" Foreground="White"
+               Width="450" Grid.ColumnSpan="3"/>
+        <Image x:Name="userAvatar" Source="Images\214743981.jpg"  Width="80" Height="80"  Grid.Column="0" 
+               HorizontalAlignment="Left" Grid.RowSpan="1" Margin="10,4,0,9.6"/>
+        <StackPanel Grid.Row="12" Grid.Column="1" Orientation="Horizontal">
+            <Button x:Name="btnSave" Content="添加用户"
+                MinHeight="30" MinWidth="100"  MaxHeight="30" MaxWidth="100"
+                FontSize="20" Background="#FF4FA6E7" Foreground="White" ButtonBase.Click="btnSave_Click1" RenderTransformOrigin="0.656,0.696" Margin="10,0,0,0"
                 />
-        <Button x:Name="Button2" Content="取  消"
-                Grid.Row="8"  MinHeight="30" MinWidth="15" MaxHeight="30" MaxWidth="100"
-                FontSize="20"  Background="#FF4FA6E7" Foreground="White" Grid.Column="2"
+            <Button x:Name="btnCancel" Content="取  消"
+                MinHeight="30" MinWidth="100" MaxHeight="30" MaxWidth="100"
+                FontSize="20"  Background="#FF4FA6E7" Foreground="White" ButtonBase.Click="btnCancel_Click2" RenderTransformOrigin="0.564,0.696 " Margin="40,0,0,0"
                 />
-        <TextBox x:Name="TextBox1" Grid.Column="1" HorizontalAlignment="Left" 
-                 Height="35" Width="200" Margin="10,20,0,0" Grid.Row="1"
-                 TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top"
-                 Grid.ColumnSpan="2"/>
-        <TextBox x:Name="TextBox2" Grid.Column="1" HorizontalAlignment="Left" 
-                 Height="35" Margin="10,20,0,0" Grid.Row="2"
-                 TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top"
-                 Width="200" Grid.ColumnSpan="2"/>
-        <TextBox x:Name="TextBox3" Grid.Column="1" HorizontalAlignment="Left" 
-                 Height="35" Margin="10,20,0,0" Grid.Row="3"
-                 TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top"
-                Width="200" Grid.ColumnSpan="2"/>
-        <TextBox x:Name="TextBox4" Grid.Column="1" HorizontalAlignment="Left" 
-                 Height="35" Margin="10,20,0,0" Grid.Row="4"
-                 TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top"
-                 Width="200" Grid.ColumnSpan="2"/>
-        <TextBox x:Name="TextBox5" Grid.Column="1" HorizontalAlignment="Left" 
-                 Height="35" Margin="10,20,0,0" Grid.Row="5"
-                 TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top"
-                 Width="200" Grid.ColumnSpan="2"/>
-        <TextBox x:Name="TextBox6" Grid.Column="1" HorizontalAlignment="Left" 
-                 Height="35" Margin="10,20,0,0" Grid.Row="6"
-                 TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top"
-                 Width="200" Grid.ColumnSpan="2"/>
-        <TextBox x:Name="TextBox7" Grid.Column="1" HorizontalAlignment="Left" 
-                 Height="35" Margin="10,20,0,0" Grid.Row="7"
-                 TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top"
-                 Width="200" Grid.ColumnSpan="2"/>
+        </StackPanel>
+
+        <TextBox x:Name="tbUserName" Grid.Column="1" HorizontalAlignment="Left" 
+                 Height="30"  Margin="10,0,0,0" FontSize="15" Grid.Row="2"
+                 TextWrapping="Wrap" Text="" VerticalAlignment="Top" 
+                 Width="268" Grid.ColumnSpan="2"/>
+        <TextBox x:Name="tbWorknum" Grid.Column="1" HorizontalAlignment="Left" 
+                 Height="30"  Margin="10,10,0,0" FontSize="15" Grid.Row="3"
+                 TextWrapping="Wrap" Text="" VerticalAlignment="Top"
+                 Width="268" Grid.ColumnSpan="2"/>
+        <TextBox x:Name="tbName" Grid.Column="1" HorizontalAlignment="Left" 
+                 Height="30" Margin="10,10,0,0" FontSize="15" Grid.Row="4"
+                 TextWrapping="Wrap" Text="" VerticalAlignment="Top"
+                 Width="268" Grid.ColumnSpan="2"/>
+        <PasswordBox x:Name="tbPassword" Grid.Column="1" HorizontalAlignment="Left" 
+                 Height="30"  Margin="10,10,0,0" FontSize="15" Grid.Row="5"
+                 VerticalAlignment="Top"
+                 Width="268" Grid.ColumnSpan="2"/>
+        <PasswordBox x:Name="tbSurePassword" Grid.Column="1" HorizontalAlignment="Left" 
+                 Height="30"  Margin="10,10,0,0" FontSize="15" Grid.Row="6"
+                  VerticalAlignment="Top"
+                 Width="268" Grid.ColumnSpan="2" />
+        <ComboBox Grid.Row="7" Grid.Column="1" Name="depName" HorizontalAlignment="Stretch" MinHeight="25" Margin="5,10,30,0" VerticalAlignment="Center"/>
+        <TextBox x:Name="tbPosition" Grid.Column="1" HorizontalAlignment="Left" 
+                 Height="30"  Margin="10,10,0,0" FontSize="15" Grid.Row="8"
+                 TextWrapping="Wrap" Text="" VerticalAlignment="Top"
+                 Width="268" Grid.ColumnSpan="2"/>
+        <TextBox x:Name="tbPhone" Grid.Column="1" HorizontalAlignment="Left" 
+                 Height="30"  Margin="10,10,0,0" FontSize="15" Grid.Row="9"
+                 TextWrapping="Wrap" Text="" VerticalAlignment="Top"
+                 Width="268" Grid.ColumnSpan="2"/>
+        <StackPanel  Grid.Column="1" Height="30"  Grid.Row="10" Width="268" Grid.ColumnSpan="1" Orientation="Horizontal"  VerticalAlignment="Bottom" HorizontalAlignment="Center"  >
+            <RadioButton Content="男" Name="boy"  GroupName="sex" Margin="5,0,0,0"/>
+            <RadioButton Content="女" Name="girl" GroupName="sex" Margin="35,0,0,0.2"/>
+        </StackPanel>
+        <StackPanel  Grid.Column="1" Height="30"  Grid.Row="11" Width="268" Grid.ColumnSpan="1" Orientation="Horizontal"  VerticalAlignment="Bottom" HorizontalAlignment="Center"  >
+            <RadioButton Content="管理员" GroupName="control"  Name="Admin" Margin="5,0,0,0"/>
+            <RadioButton Content="普通用户" GroupName="control" Name="ComUser" Margin="10,0,0,0"/>
+        </StackPanel>
+
+
+        <Button x:Name="chooseImage" 
+            Content="选择头像" 
+            HorizontalAlignment="Left" Height="30" Margin="0.2,49,0,0" Width="60" 
+            VerticalAlignment="Top"   ButtonBase.Click="chooseImage_Click3" Grid.Column="1" Grid.RowSpan="2" Foreground="#FFF3F2F2" Background="{x:Null}" BorderBrush="{x:Null}"/>
+        <TextBox Name="AvatarPath" Grid.Column="1" Grid.Row="1"  Visibility="Hidden"/>
 
         <Grid.RowDefinitions>
-            <RowDefinition Height ="* "></RowDefinition>
-            <RowDefinition Height ="Auto"></RowDefinition>
-            <RowDefinition Height ="Auto"></RowDefinition>
-            <RowDefinition Height ="Auto"></RowDefinition>
-            <RowDefinition Height ="Auto"></RowDefinition>
-            <RowDefinition Height ="Auto"></RowDefinition>
-            <RowDefinition Height ="Auto"></RowDefinition>
-            <RowDefinition Height ="Auto"></RowDefinition>
+            <RowDefinition Height ="2* "></RowDefinition>
+            <RowDefinition Height ="0.3*"></RowDefinition>
+            <RowDefinition Height ="*"></RowDefinition>
+            <RowDefinition Height ="*"></RowDefinition>
+            <RowDefinition Height ="*"></RowDefinition>
+            <RowDefinition Height ="*"></RowDefinition>
+            <RowDefinition Height ="*"></RowDefinition>
+            <RowDefinition Height ="*"></RowDefinition>
+            <RowDefinition Height ="*"></RowDefinition>
+            <RowDefinition Height ="*"></RowDefinition>
+            <RowDefinition Height ="*"></RowDefinition>
+            <RowDefinition Height ="*"></RowDefinition>
             <RowDefinition Height ="*"></RowDefinition>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width=" *"></ColumnDefinition>
-            <ColumnDefinition Width=" *"></ColumnDefinition>
-            <ColumnDefinition Width=" *"></ColumnDefinition>
+            <ColumnDefinition Width=" Auto"></ColumnDefinition>
+            <ColumnDefinition Width=" Auto"></ColumnDefinition>
+            <ColumnDefinition Width=" Auto"></ColumnDefinition>
         </Grid.ColumnDefinitions>
 
+
     </Grid>
+
 </Window>

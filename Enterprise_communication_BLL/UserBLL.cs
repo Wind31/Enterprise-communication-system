@@ -48,6 +48,8 @@ namespace Enterprise_communication_BLL
             {
                 if (user.Password == pwd)
                 {
+                    if (user.State == 1)
+                        return false;
                     user.Ipaddress = GetLocalIp();
                     user.State = 1;
                     dal.UpdateUser(user);
@@ -68,7 +70,6 @@ namespace Enterprise_communication_BLL
         public static string GetLocalIp()
         {
             IPAddress localIp = null;
-
             try
             {
                 IPAddress[] ipArray;
@@ -99,6 +100,26 @@ namespace Enterprise_communication_BLL
             list = dal.GetUsersByGroupId(id);
             return list;
         }
-       
+        public bool AddUser(User user) //增加用户
+        {
+            UserDAL dal = new UserDAL();
+            return dal.AddUser(user) > 0;
+        }
+
+        public List<User> GetAllUsers()
+        {
+            UserDAL dal = new UserDAL();
+            return dal.GetAllUsers();
+        }
+        public bool Delete(int id)//用Username删除某用户
+        {
+            UserDAL dal = new UserDAL();
+            bool IsSuccess = false;
+            if (dal.Delete(id) > 0)
+                IsSuccess = true;//删除成功
+            return IsSuccess;
+
+        }
+
     }
 }

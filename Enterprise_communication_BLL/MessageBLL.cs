@@ -24,13 +24,13 @@ namespace Enterprise_communication_BLL
             if (receiver.State == 1)
             {
             //发送消息到服务端
-            IPAddress ip = IPAddress.Parse("192.168.103.75");
+            IPAddress ip = IPAddress.Parse(IP.Ipaddress);
             Socket clientSocket = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
             String text = receiver.Id+"###"+message.Content+"###"+message.Sendtype.ToString()+"###"+message.Userid;
             //设定服务器IP地址  
             try
             {
-            clientSocket.Connect(new IPEndPoint(ip, 6002)); //配置服务器IP与端口  
+            clientSocket.Connect(new IPEndPoint(ip, IP.Port)); //配置服务器IP与端口  
 
             }
             catch

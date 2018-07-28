@@ -22,8 +22,11 @@ namespace Enterprise_communication
     /// </summary>
     public partial class OneToManyWindow : Window
     {
-        Group group;
+        public Group group;
         User msgsender;
+        int n = 0;
+        GroupMessageBLL groupmessagebll = new GroupMessageBLL();
+        List<GroupMessage> groupmessages = new List<GroupMessage>();
         public OneToManyWindow(Group group,User msgsender)
         {
             InitializeComponent();
@@ -66,18 +69,36 @@ namespace Enterprise_communication
                 memberlist.Items.Add(stack);
                 //list.Items.Add(stack);
             }
+            RefreshGroupMessage();
            // memberlist.Items.Add(list);
+        }
+        public void RefreshGroupMessage()
+        {
+            ShowMessage.Text = "";
+            n = n + 10;
+            groupmessages.Clear();
+            groupmessages = groupmessagebll.GetSomeMessages(group,n);
+            foreach (GroupMessage m in groupmessages)
+            {
+                UserBLL userBLL = new UserBLL();
+                User temp = null;
+                userBLL.GetUserByID(m.Userid, out temp);
+                string msg = "\n" + temp.Name + "    " + m.Sendtime.ToString() + "\n" + m.Content + "\n";
+                ShowMessage.AppendText(msg);
+            }
+            ShowMessage.ScrollToEnd();
+            msgscroll.ScrollToEnd();
         }
 
         private void ScrollBar_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
-
+            
         }
 
         
        private void btnCheckRe_Click(object sender, RoutedEventArgs e) //查看历史消息
        {
-
+            RefreshGroupMessage();
        }
 
        private void btnSendFile_Click(object sender, RoutedEventArgs e) //发送群文件
@@ -92,6 +113,11 @@ namespace Enterprise_communication
 
        private void btnSendMessage_Click(object sender, RoutedEventArgs e) //发送消息
        {
+            if (sendmsg.Text == string.Empty)
+            {
+                MessageBox.Show("消息不能为空");
+                return;
+            }
             GroupMessage message = new GroupMessage();
             message.Content = sendmsg.Text;
             message.Userid = msgsender.Id;
@@ -115,5 +141,10 @@ namespace Enterprise_communication
        {
 
        }
+
+        private void Window_Closed(object sender, EventArgs e)
+        {
+            App.list2.Remove(this);
+        }
     }
 }

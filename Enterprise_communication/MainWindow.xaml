@@ -134,7 +134,7 @@
             </Setter>
         </Style>
     </Window.Resources>
-    <Grid ShowGridLines="True">
+    <Grid >
         <Grid.RowDefinitions>
             <RowDefinition Height="auto"></RowDefinition>
             <RowDefinition Height="auto"></RowDefinition>
@@ -224,7 +224,7 @@
                 </TabItem>
                 <TabItem Header="群聊"   Style="{StaticResource TabItemStyle}" Cursor="Hand" MinHeight="40"  Margin="5,0" FontSize="40">
                     <ListBox Name="GroupList">
-                        <Button Name="creategroup" Background="White" Margin="10" Click="Create_Group_Click">
+                        <Button Name="creategroup" Background="White" Margin="10" Click="Create_Group_Click" BorderThickness="0">
                             <StackPanel Orientation="Horizontal" >
                                 <Image Source="images\add.png" MaxHeight="50" MaxWidth="50"/>
                                 <Label VerticalContentAlignment="Center">发起群聊</Label>

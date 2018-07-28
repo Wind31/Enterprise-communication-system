@@ -83,6 +83,12 @@ namespace Enterprise_communication_DAL
             }
             return user;
         }
+        public int Delete(int id)
+        {
+            string sql = "DELETE FROM en_user WHERE e_id =" + id;
+            MySqlDbHelper db = new MySqlDbHelper();
+            return db.ExecuteNonQuery(sql);
+        }
         public User GetUserByUserId(int id)
         {
             //1 sql语句

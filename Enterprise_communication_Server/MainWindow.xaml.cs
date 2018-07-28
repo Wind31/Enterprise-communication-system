@@ -71,6 +71,7 @@ namespace Enterprise_communication_Server
                     //获取客户端端口
                     int clientPort = (connection.RemoteEndPoint as IPEndPoint).Port;
                     //接收消息格式 [0]发送者ID [1]发送内容 [2]消息类型
+                    //群 [0]群ID [1] 内容 [2]类型
                     String sendStr = StrArr[3] + "###" + StrArr[1] + "###" + StrArr[2];
                     if (StrArr[2] != "0" && StrArr[2] != "4")
                     {
@@ -79,8 +80,16 @@ namespace Enterprise_communication_Server
                     }
                     if (StrArr[2] == "4")
                     {
-                        foreach (Socket r in userTable)
-                            r.Send(Encoding.ASCII.GetBytes(sendStr));
+                        foreach (string item in userTable.Keys)
+                        {
+                            if (item != StrArr[3])
+                            {
+                                Socket receiver = userTable[item] as Socket;
+                                receiver.Send(Encoding.ASCII.GetBytes(sendStr + "###" + StrArr[0]));
+                            }
+                           
+                        }
+                            
                     }
 
                     //显示内容
@@ -105,7 +114,7 @@ namespace Enterprise_communication_Server
             IPAddress[] ipArray;
             ipArray = Dns.GetHostAddresses(Dns.GetHostName());
             IPAddress localip = ipArray.First(ip => ip.AddressFamily == AddressFamily.InterNetwork);
-            tcpListener = new TcpListener(localip, 6002);
+            tcpListener = new TcpListener(IPAddress.Parse("127.0.0.1"), 6002);
             tcpListener.Start();
             Start.Content = "监听中";
             Start.IsEnabled = false;
@@ -126,7 +135,8 @@ namespace Enterprise_communication_Server
                 userTable.Clear();
                 userTable = null;
             }
-            System.Environment.Exit(0);
+            Environment.Exit(0);
+            App.Current.Shutdown();
         }
     }
 }

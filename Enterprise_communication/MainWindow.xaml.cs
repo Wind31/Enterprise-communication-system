@@ -48,10 +48,10 @@ namespace Enterprise_communication
         }
         public void ConnectToServer()
         {
-            IPAddress ip = IPAddress.Parse("192.168.103.75");
+            IPAddress ip = IPAddress.Parse(IP.Ipaddress);
             clientSocket = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
-            clientSocket.Connect(new IPEndPoint(ip, 6002));
-            String text = user.Id+ "###" + "success" + "###"+"0"+"###"+user.Id;
+            clientSocket.Connect(new IPEndPoint(ip, IP.Port));
+            String text = user.Id + "###" + "success" + "###" + "0" + "###" + user.Id;
             clientSocket.Send(Encoding.ASCII.GetBytes(text));
             Thread receiveThread = new Thread(ReceiveMessage);
             receiveThread.Start(clientSocket);
@@ -79,24 +79,70 @@ namespace Enterprise_communication
                             User chatuser = new User();
                             userbll.GetUserByID(Convert.ToInt32(StrArr[0]), out chatuser);
                             //MessageBox.Show("收到来自" + chatuser.Name + "的新消息");
+                            this.Dispatcher.BeginInvoke(System.Windows.Threading.DispatcherPriority.Normal,
+                                (ThreadStart)delegate ()
+                                {
+                                    int i;
+                                    for (i = 0; i < App.list.Count; i++)
+                                    {
+                                        OneToOne o = App.list[i];
+                                        if (o.msgreceiver.Name == chatuser.Name)
+                                        {
+                                            string msg = "\n" + chatuser.Name + "    " + DateTime.Now.ToString() + "\n" + StrArr[1] + "\n";
+                                            o.ShowMessage.AppendText(msg);
+                                            break;
+                                        }
+                                    }
+                                    if (i >= App.list.Count)
+                                    {
+                                        OneToOne one = new OneToOne(user, chatuser, connection);
+                                        App.list.Add(one);
+                                        one.Show();
+                                    }
+                                });
+
                         }
-                        else
+                        else if(StrArr[3]!=user.Id.ToString())
                         {
                             GroupBLL groupBLL = new GroupBLL();
                             List<Group> groups = new List<Group>();
-                            groups= groupBLL.GetGroupListByUserId(user.Id);
-                            foreach(Group g in groups)
+                            groups = groupBLL.GetGroupListByUserId(user.Id);
+                            foreach (Group g in groups)
                             {
                                 if (g.Id == Convert.ToInt32(StrArr[0]))
                                 {
-                                    MessageBox.Show("收到来自" + g.Name + "的新消息");
+                                    //MessageBox.Show("收到来自" + g.Name + "的新消息");
+                                    this.Dispatcher.BeginInvoke(System.Windows.Threading.DispatcherPriority.Normal,
+                                (ThreadStart)delegate ()
+                                {
+                                    int i;
+                                    for (i = 0; i < App.list2.Count; i++)
+                                    {
+                                        OneToManyWindow o = App.list2[i];
+                                        if (o.group.Id == g.Id)
+                                        {
+                                            UserBLL userBLL = new UserBLL();
+                                            User temp = null;
+                                            userBLL.GetUserByID(Convert.ToInt32(StrArr[3]), out temp);
+                                            string msg = "\n" + temp.Name + "    " + DateTime.Now.ToString() + "\n" + StrArr[1] + "\n";
+                                            o.ShowMessage.AppendText(msg);
+                                            break;
+                                        }
+                                    }
+                                    if (i >= App.list2.Count)
+                                    {
+                                        OneToManyWindow many = new OneToManyWindow(g, user);
+                                        App.list2.Add(many);
+                                        many.Show();
+                                    }
+                                });
                                     break;
                                 }
                             }
                         }
                         ConnectToServer();
                     }
-                    
+
                     //    text2.Dispatcher.BeginInvoke(
 
                     //           new Action(() => { text2.Text += "\r\n" + recStr; }), null);
@@ -181,11 +227,11 @@ namespace Enterprise_communication
         }
         private void RefreshGroup()
         {
-            for (int i = GroupList.Items.Count-1; i >=1; i--)
+            for (int i = GroupList.Items.Count - 1; i >= 1; i--)
             {
                 GroupList.Items.RemoveAt(i);
             }
-                
+
             GroupBLL groupbll = new GroupBLL();
             GroupsList = groupbll.GetGroupListByUserId(user.Id);
             foreach (Group p in GroupsList)
@@ -205,7 +251,8 @@ namespace Enterprise_communication
                 groupbutton.Background = Brushes.White;
                 groupbutton.Content = groupstack;
                 groupbutton.Margin = new Thickness(10);
-                groupbutton.Name = "no_"+p.Id.ToString();
+                groupbutton.Name = "no_" + p.Id.ToString();
+                groupbutton.BorderThickness = new Thickness(0);
                 groupbutton.MouseDoubleClick += GroupChat_Click;
                 GroupList.Items.Add(groupbutton);
             }
@@ -302,12 +349,13 @@ namespace Enterprise_communication
             User user2 = null;
             UserBLL bll = new UserBLL();
             bll.GetUserByUsername(button.Name, out user2);
-            if(user2==null)
+            if (user2 == null)
             {
                 MessageBox.Show("此用户已被删除!");
                 return;
             }
             OneToOne one = new OneToOne(user, user2, clientSocket);
+            App.list.Add(one);
             one.Show();
         }
         private void GroupChat_Click(object sender, RoutedEventArgs e)
@@ -315,13 +363,14 @@ namespace Enterprise_communication
             Button button = (Button)sender;
             Group group = null;
             GroupBLL bll = new GroupBLL();
-            bll.GetGroupByID(Convert.ToInt32(button.Name.Split('_')[1]),out group);
-            if (group== null)
+            bll.GetGroupByID(Convert.ToInt32(button.Name.Split('_')[1]), out group);
+            if (group == null)
             {
                 MessageBox.Show("此群已被删除!");
                 return;
             }
-            OneToManyWindow onetomany = new OneToManyWindow(group,user);
+            OneToManyWindow onetomany = new OneToManyWindow(group, user);
+            App.list2.Add(onetomany);
             onetomany.Show();
         }
 
@@ -330,7 +379,7 @@ namespace Enterprise_communication
         {
             UserInfo userInfo = new UserInfo(user);
             userInfo.ShowDialog();
-            userbll.GetUserByUsername(user.Username,out user);
+            userbll.GetUserByUsername(user.Username, out user);
             RefreshSelf();
         }
     }

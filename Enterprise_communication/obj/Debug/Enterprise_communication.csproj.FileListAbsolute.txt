@@ -41,3 +41,7 @@ F:\Enterprise_communication\Enterprise_communication\obj\Debug\OneToOne.g.cs
 F:\Enterprise_communication\Enterprise_communication\obj\Debug\OneToOne.baml
 F:\Enterprise_communication\Enterprise_communication\obj\Debug\UserInfo.g.cs
 F:\Enterprise_communication\Enterprise_communication\obj\Debug\UserInfo.baml
+F:\Enterprise_communication\Enterprise_communication\obj\Debug\AdmiEditUserInfor.g.cs
+F:\Enterprise_communication\Enterprise_communication\obj\Debug\UserInf_U.g.cs
+F:\Enterprise_communication\Enterprise_communication\obj\Debug\AdmiEditUserInfor.baml
+F:\Enterprise_communication\Enterprise_communication\obj\Debug\UserInf_U.baml

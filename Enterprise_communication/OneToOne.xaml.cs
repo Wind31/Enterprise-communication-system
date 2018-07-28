@@ -24,6 +24,7 @@ namespace Enterprise_communication
     {
         public User msgsender = new User();
         public User msgreceiver =new User();
+        int n = 0;
         MessageBLL bll = new MessageBLL();
         List<Message> messages = new List<Message>();
         Socket clientSocket;
@@ -35,10 +36,13 @@ namespace Enterprise_communication
             clientSocket = socket;
             this.Topmost = true;
             chattingname.Content = msgreceiver.Name;
-            RefreshMessage(10);
+            RefreshMessage();
         }
-        public void RefreshMessage(int n)
+        public void RefreshMessage()
         {
+            ShowMessage.Text = "";
+            n += 10;
+            messages.Clear();
             messages = bll.GetSomeMessages(msgsender, msgreceiver, n);
             foreach (Message m in messages)
             {
@@ -48,6 +52,8 @@ namespace Enterprise_communication
                 string msg = "\n" + temp.Name + "    " + m.Sendtime.ToString() + "\n" + m.Content + "\n";
                 ShowMessage.AppendText(msg);
             }
+            ShowMessage.ScrollToEnd();
+            msgscroll.ScrollToEnd();
         }
         private void btnSendFile_Click(object sender, RoutedEventArgs e) //发送文件
         {
@@ -61,6 +67,11 @@ namespace Enterprise_communication
 
         private void btnSendMessage_Click(object sender, RoutedEventArgs e) //发送消息
         {
+            if (sendmsg.Text == string.Empty)
+            {
+                MessageBox.Show("消息不能为空");
+                return;
+            }
             Message message = new Message();
             message.Content = sendmsg.Text;
             message.Userid = msgsender.Id;
@@ -88,6 +99,12 @@ namespace Enterprise_communication
 
         private void Window_Closed(object sender, EventArgs e)
         {
+            App.list.Remove(this);
+        }
+
+        private void btnCheckRe_Click(object sender, RoutedEventArgs e)
+        {
+            RefreshMessage();
         }
     }
 }

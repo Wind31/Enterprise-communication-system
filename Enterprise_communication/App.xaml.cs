@@ -14,6 +14,7 @@ namespace Enterprise_communication
     /// </summary>
     public partial class App : Application
     {
-
+        public static List<OneToOne> list = new List<OneToOne>();
+        public static List<OneToManyWindow> list2 = new List<OneToManyWindow>();
     }
 }
