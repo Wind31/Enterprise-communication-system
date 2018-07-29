@@ -160,11 +160,6 @@ namespace Enterprise_communication
             }
         }
 
-       private void btnVidio_Click(object sender, RoutedEventArgs e) //多人视频
-       {
-
-       }
-
        private void btnSendMessage_Click(object sender, RoutedEventArgs e) //发送消息
        {
             if (sendmsg.Text == string.Empty)

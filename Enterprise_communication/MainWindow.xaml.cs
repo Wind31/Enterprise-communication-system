@@ -82,6 +82,7 @@ namespace Enterprise_communication
                             this.Dispatcher.BeginInvoke(System.Windows.Threading.DispatcherPriority.Normal,
                                 (ThreadStart)delegate ()
                                 {
+                                    RefreshUser();
                                     int i;
                                     for (i = 0; i < App.list.Count; i++)
                                     {
@@ -126,6 +127,7 @@ namespace Enterprise_communication
                                     this.Dispatcher.BeginInvoke(System.Windows.Threading.DispatcherPriority.Normal,
                                 (ThreadStart)delegate ()
                                 {
+                                    RefreshUser();
                                     int i;
                                     for (i = 0; i < App.list2.Count; i++)
                                     {
@@ -195,6 +197,7 @@ namespace Enterprise_communication
         }
         private void RefreshUser()
         {
+            departmentTree.Items.Clear();
             DepartmentsList = deptbll.GetDepartmentsList();
             UserList = userbll.GetUsersList();
             //this.departmentTree.ItemsSource = GetTrees(0, GetNodes());//数据绑定

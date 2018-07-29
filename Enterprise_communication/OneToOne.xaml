@@ -44,7 +44,6 @@
             </ScrollViewer>
         </StackPanel>
         <Button Name="btnSendFile" Content="发送文件" Grid.Row="6" Grid.Column="0" HorizontalAlignment="Left" VerticalAlignment="Stretch"  BorderBrush="{x:Null}" Foreground="#FF0E0C0C" Background="{x:Null}" RenderTransformOrigin="2.447,0.306"  Click="btnSendFile_Click"  />
-        <Button Name="btnSendFile1" Content="视频会议" Grid.Row="6" Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Stretch" BorderBrush="{x:Null}" Foreground="#FF0E0C0C" Background="{x:Null}" RenderTransformOrigin="0.503,0.5" Click="btnVidio_Click" />
         <Button Name="btnSendMessage" Content="发送" Grid.Row="7" Grid.Column="2" HorizontalAlignment="Right" VerticalAlignment="Center"  BorderBrush="{x:Null}" Foreground="White" Background="#FF0594D8" Click="btnSendMessage_Click" Margin="0,40.4,0.2,36.4" Width="51" Height="24" />
 
 

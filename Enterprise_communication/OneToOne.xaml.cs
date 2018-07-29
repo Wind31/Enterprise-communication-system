@@ -115,10 +115,6 @@ namespace Enterprise_communication
             }
         }
 
-        private void btnVidio_Click(object sender, RoutedEventArgs e) //视频
-        {
-
-        }
 
         private void btnSendMessage_Click(object sender, RoutedEventArgs e) //发送消息
         {

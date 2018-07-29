@@ -197,5 +197,26 @@
     <Resource Include="images\bqb3.jpg" />
     <Resource Include="images\head.jpg" />
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\add.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\delete.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\edit.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\exit.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\chat.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\look.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\check.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

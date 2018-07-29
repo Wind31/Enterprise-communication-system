@@ -148,7 +148,7 @@ namespace Enterprise_communication
 
                 if (user.Control == 1) //管理员
                 {
-                    AdministratorWindow administratorWindow = new AdministratorWindow();
+                    AdministratorWindow administratorWindow = new AdministratorWindow(user);
                     administratorWindow.Show();
                     this.Hide();
                 }

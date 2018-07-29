@@ -21,10 +21,12 @@ namespace Enterprise_communication
     public partial class AdministratorWindow : Window
     {
         private UserBLL bll = new UserBLL();
-        public AdministratorWindow()
+        private User user1 = new User();
+        public AdministratorWindow(User user)
         {
             InitializeComponent();
             LoadData();
+            user1 = user;
         }
 
         private void LoadData()
@@ -32,7 +34,7 @@ namespace Enterprise_communication
             this.dgUsers.ItemsSource = bll.GetAllUsers();
         }
         //查询
-        private void btnCheck_Click(object sender, RoutedEventArgs e)
+        private void btnLook_Click(object sender, RoutedEventArgs e)
         {
             int num = dgUsers.SelectedIndex;
             if (num < 0)
@@ -135,8 +137,14 @@ namespace Enterprise_communication
         {
             if (MessageBox.Show("确定退出程序？", "管理员", MessageBoxButton.YesNo, MessageBoxImage.Information) == MessageBoxResult.Yes)
             {
+                user1.State = 0;
                 Application.Current.Shutdown();
             }
+        }
+        private void btnChat_Click(object sender, RoutedEventArgs e)
+        {
+            MainWindow mainWindow = new MainWindow(user1);
+            mainWindow.Show();
         }
     }
 }

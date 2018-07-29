@@ -34,22 +34,26 @@
         <Image Source="images\background.jpg" Grid.Row="0" Grid.Column="0" Stretch="Fill" Grid.ColumnSpan="10" MinHeight="450" />
 
         <Label Content="用户管理" Grid.Column="2" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="White" FontSize="18"/>
-        <Button Name="btnCheck" ToolTip="查看" Grid.Row="1" Grid.ColumnSpan="1" Click="btnCheck_Click" VerticalAlignment="Bottom" HorizontalAlignment="Left" Margin="2,2,15,2">
-            <Image Source="Images/check.png" RenderTransformOrigin="0.5,0.518"></Image>
+        <Button Name="btnChat" ToolTip="聊天" Grid.Row="1" Grid.ColumnSpan="1"  Click="btnChat_Click"  VerticalAlignment="Bottom" HorizontalAlignment="Left" Margin="2,2,18,2" >
+            <Image Source="Images/chat.png"></Image>
         </Button>
-        <Button Name="btnAdd" ToolTip="新增" Grid.Row="2" Grid.ColumnSpan="1"  Click="btnAdd_Click" VerticalAlignment="Bottom" HorizontalAlignment="Left" Margin="2,2,2,2">
+        <Button Name="btnLook" ToolTip="查看" Grid.Row="2" Grid.ColumnSpan="1" Click="btnLook_Click" VerticalAlignment="Bottom" HorizontalAlignment="Left" Margin="2,2,18,2">
+            <Image Source="Images/look.png" RenderTransformOrigin="0.5,0.518"></Image>
+        </Button>
+        <Button Name="btnAdd" ToolTip="新增" Grid.Row="3" Grid.ColumnSpan="1"  Click="btnAdd_Click" VerticalAlignment="Bottom" HorizontalAlignment="Left" Margin="2,2,2,2">
             <Image Source="Images/add.ico"  ></Image>
         </Button>
-        <Button Name="btnEdit" ToolTip="修改" Grid.Row="3" Grid.ColumnSpan="1"  Click="btnEdit_Click" VerticalAlignment="Bottom" HorizontalAlignment="Left" Margin="2,2,2,2">
+        <Button Name="btnEdit" ToolTip="修改" Grid.Row="4" Grid.ColumnSpan="1"  Click="btnEdit_Click" VerticalAlignment="Bottom" HorizontalAlignment="Left" Margin="2,2,2,2">
             <Image Source="Images/edit.ico"></Image>
         </Button>
-        <Button Name="btnDelete" ToolTip="删除" Grid.Row="4" Grid.ColumnSpan="1"  Click="btnDelete_Click" VerticalAlignment="Bottom" HorizontalAlignment="Left" Margin="2,2,2,2">
+        <Button Name="btnDelete" ToolTip="删除" Grid.Row="5" Grid.ColumnSpan="1"  Click="btnDelete_Click" VerticalAlignment="Bottom" HorizontalAlignment="Left" Margin="2,2,2,2">
             <Image Source="Images/delete.ico"></Image>
         </Button>
-        <Button Name="btnCheckState" ToolTip="审核" Grid.Row="5" Grid.ColumnSpan="1"  Click="btnCheckState_Click" VerticalAlignment="Bottom" HorizontalAlignment="Left" Margin="2,2,2,2">
-            <Image Source="Images/state.png"></Image>
+
+        <Button Name="btnCheckState" ToolTip="审核" Grid.Row="6" Grid.ColumnSpan="1"  Click="btnCheckState_Click" VerticalAlignment="Bottom" HorizontalAlignment="Left" Margin="2,2,2,2">
+            <Image Source="Images/check.png"></Image>
         </Button>
-        <Button Name="btnExit" ToolTip="退出" Grid.Row="6" Grid.ColumnSpan="1"  Click="btnExit_Click" VerticalAlignment="Bottom" HorizontalAlignment="Left" Margin="2,2,2,2">
+        <Button Name="btnExit" ToolTip="退出" Grid.Row="7" Grid.ColumnSpan="1"  Click="btnExit_Click" VerticalAlignment="Bottom" HorizontalAlignment="Left" Margin="2,2,2,2">
             <Image Source="Images/exit.png"></Image>
         </Button>
         <DataGrid HorizontalAlignment="Stretch" Name="dgUsers" Grid.Column="2" Grid.Row="1" Grid.RowSpan="10" AutoGenerateColumns="False" CanUserAddRows="false">

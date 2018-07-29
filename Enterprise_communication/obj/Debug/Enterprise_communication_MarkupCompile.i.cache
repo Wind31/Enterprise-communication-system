@@ -4,17 +4,17 @@
 winexe
 C#
 .cs
-F:\Enterprise_communication\Enterprise_communication\obj\Debug\
+D:\QQ\QQ文件\Enterprise_communication\Enterprise_communication\obj\Debug\
 Enterprise_communication
 none
 false
 DEBUG;TRACE
-F:\Enterprise_communication\Enterprise_communication\App.xaml
+D:\QQ\QQ文件\Enterprise_communication\Enterprise_communication\App.xaml
 121110854834
 
-20449806103
-16967552702
+20-886964842
+16-266135067
 AddUser.xaml;AdmiEditUserInfor.xaml;AdministratorWindow.xaml;AlterUserInf_U.xaml;LoginWindow.xaml;MainWindow.xaml;OneToManyWindow.xaml;OneToOne.xaml;RegisterWindow.xaml;SelectGroupUser.xaml;UserInfo.xaml;UserInf_U.xaml;
 
-False
+True
 
