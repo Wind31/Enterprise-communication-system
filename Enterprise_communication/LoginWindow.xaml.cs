@@ -109,6 +109,8 @@ namespace Enterprise_communication
         public LoginWindow()
         {
             InitializeComponent();
+            ServerIp.Text = "127.0.0.1";
+            ServerPort.Text = "6002";
         }
         //注册
         private void btnRegister_Click(object sender, RoutedEventArgs e)
@@ -127,7 +129,10 @@ namespace Enterprise_communication
         {
             string name = UserName.Text;
             string password = passWord.Password; //获取输入的用户名和密码
-
+            ServerIp.IsEnabled = false;
+            ServerPort.IsEnabled = false;
+            IP.Ipaddress = ServerIp.Text;
+            IP.Port = Convert.ToInt32(ServerPort.Text);
             User user = null;
             UserBLL bll = new UserBLL();
             bool flag = false;

@@ -74,7 +74,7 @@ namespace Enterprise_communication
                     string[] StrArr = System.Text.RegularExpressions.Regex.Split(recStr, "###");
                     if (recStr != string.Empty)
                     {
-                        if (StrArr[2] != "4")
+                        if (StrArr[2] != "4"&& StrArr[2] != "5"&&StrArr[2] != "6")
                         {
                             User chatuser = new User();
                             userbll.GetUserByID(Convert.ToInt32(StrArr[0]), out chatuser);
@@ -88,8 +88,19 @@ namespace Enterprise_communication
                                         OneToOne o = App.list[i];
                                         if (o.msgreceiver.Name == chatuser.Name)
                                         {
-                                            string msg = "\n" + chatuser.Name + "    " + DateTime.Now.ToString() + "\n" + StrArr[1] + "\n";
-                                            o.ShowMessage.AppendText(msg);
+                                            if (StrArr[2] == "3")
+                                            {
+                                                o.n = 0;
+                                                o.RefreshMessage();
+                                            }
+                                            else
+                                            {
+                                                string msg = "\n" + chatuser.Name + "    " + DateTime.Now.ToString() + "\n" + StrArr[1] + "\n";
+                                                o.ShowMessage.AppendText(msg);
+                                                o.ShowMessage.ScrollToEnd();
+                                                o.msgscroll.ScrollToEnd();
+                                            }
+                                            
                                             break;
                                         }
                                     }
@@ -121,11 +132,21 @@ namespace Enterprise_communication
                                         OneToManyWindow o = App.list2[i];
                                         if (o.group.Id == g.Id)
                                         {
-                                            UserBLL userBLL = new UserBLL();
-                                            User temp = null;
-                                            userBLL.GetUserByID(Convert.ToInt32(StrArr[3]), out temp);
-                                            string msg = "\n" + temp.Name + "    " + DateTime.Now.ToString() + "\n" + StrArr[1] + "\n";
-                                            o.ShowMessage.AppendText(msg);
+                                            if(StrArr[2] == "6")
+                                            {
+                                                o.n = 0;
+                                                o.RefreshGroupMessage();
+                                            }
+                                            else
+                                            {
+                                                UserBLL userBLL = new UserBLL();
+                                                User temp = null;
+                                                userBLL.GetUserByID(Convert.ToInt32(StrArr[3]), out temp);
+                                                string msg = "\n" + temp.Name + "    " + DateTime.Now.ToString() + "\n" + StrArr[1] + "\n";
+                                                o.ShowMessage.AppendText(msg);
+                                                o.ShowMessage.ScrollToEnd();
+                                                o.msgscroll.ScrollToEnd();
+                                            }
                                             break;
                                         }
                                     }

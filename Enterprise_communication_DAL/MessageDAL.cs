@@ -14,15 +14,16 @@ namespace Enterprise_communication_DAL
         public int AddMessage(Message message)
         {
             //sql语句
-            String sql = "INSERT INTO en_message(e_userid,e_receiverid,e_content,e_sendtime,e_msgstate,e_sendtype) " +
-                "VALUES(@userid,@receiverid,@content,@sendtime,@msgstate,@sendtype)";
+            String sql = "INSERT INTO en_message(e_userid,e_receiverid,e_content,e_sendtime,e_msgstate,e_sendtype,e_file) " +
+                "VALUES(@userid,@receiverid,@content,@sendtime,@msgstate,@sendtype,@file)";
             //参数列表
             MySqlParameter[] param = { new MySqlParameter("@userid", MySqlDbType.Int32),
             new MySqlParameter("@receiverid", MySqlDbType.Int32),
             new MySqlParameter("@content", MySqlDbType.VarChar),
             new MySqlParameter("@sendtime", MySqlDbType.DateTime),
             new MySqlParameter("@msgstate", MySqlDbType.Int16),
-            new MySqlParameter("@sendtype", MySqlDbType.Int16)
+            new MySqlParameter("@sendtype", MySqlDbType.Int16),
+            new MySqlParameter("@file", MySqlDbType.LongBlob)
             };
 
             //参数赋值
@@ -32,10 +33,11 @@ namespace Enterprise_communication_DAL
             param[3].Value = message.Sendtime;
             param[4].Value = message.State;
             param[5].Value = message.Sendtype;
+            param[6].Value = message.Sendfile; ;
             MySqlDbHelper db = new MySqlDbHelper();
             return db.ExecuteNonQuery(sql, CommandType.Text, param);
         }
-        public List<Message> GetSomeMessage(User sender,User receiver, int id)
+        public List<Message> GetSomeMessage(User sender, User receiver, int id)
         {
             string sql = "SELECT * FROM en_message where e_userid=@userid and e_receiverid=@receiverid or e_userid=@receiverid and e_receiverid=@userid"
                 + " order by e_sendtime desc limit " + id.ToString();
@@ -67,6 +69,10 @@ namespace Enterprise_communication_DAL
             message.Sendtime = Convert.ToDateTime(dr["e_sendtime"]);
             message.State = Convert.ToInt32(dr["e_msgstate"]);
             message.Sendtype = Convert.ToInt32(dr["e_sendtype"]);
+            if (dr["e_file"] != DBNull.Value)
+                message.Sendfile = (byte[])dr["e_file"];
+            else
+                message.Sendfile = null;
             return message;
         }
 

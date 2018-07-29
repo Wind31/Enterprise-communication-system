@@ -39,5 +39,6 @@ namespace Enterprise_communication_model
         /// 消息内容
         /// </summary>
         public string Content { get; set; }
+        public byte[] Sendfile { get; set; }
     }
 }

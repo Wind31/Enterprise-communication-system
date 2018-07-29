@@ -9,5 +9,9 @@
     <Grid>
         <TextBox Name="text1" HorizontalAlignment="Left" Height="86" Margin="108,48,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="240"/>
         <Button Name="Start" Content="开始监听" HorizontalAlignment="Left" Margin="378,69,0,0" VerticalAlignment="Top" Width="75" Height="53" Click="Button_Click"></Button>
+        <Label Margin="108,150,585.6,230" FontSize="20" Width="100">监听地址</Label>
+        <TextBox Name="Localip" HorizontalAlignment="Left" Height="30" Margin="208,160,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="300" FontSize="20"/>
+        <Label Margin="108,200,585.6,176" FontSize="20" Width="100">监听端口</Label>
+        <TextBox Name="Localport" HorizontalAlignment="Left" Height="30" Margin="208,200,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="300" Text="6002" FontSize="20"/>
     </Grid>
 </Window>

@@ -31,6 +31,10 @@ namespace Enterprise_communication_Server
         public MainWindow()
         {
             InitializeComponent();
+            IPAddress[] ipArray;
+            ipArray = Dns.GetHostAddresses(Dns.GetHostName());
+            IPAddress localip = ipArray.First(ip => ip.AddressFamily == AddressFamily.InterNetwork);
+            Localip.Text = localip.ToString();
         }
 
         //监听客户端发来的请求  
@@ -73,24 +77,27 @@ namespace Enterprise_communication_Server
                     //接收消息格式 [0]发送者ID [1]发送内容 [2]消息类型
                     //群 [0]群ID [1] 内容 [2]类型
                     String sendStr = StrArr[3] + "###" + StrArr[1] + "###" + StrArr[2];
-                    if (StrArr[2] != "0" && StrArr[2] != "4")
+                    if(StrArr[2] != "0")
                     {
-                        Socket receiverSocket = userTable[StrArr[0]] as Socket;
-                        receiverSocket.Send(Encoding.ASCII.GetBytes(sendStr));
-                    }
-                    if (StrArr[2] == "4")
-                    {
-                        foreach (string item in userTable.Keys)
+                        if (StrArr[2] != "4" && StrArr[2] != "5" && StrArr[2] != "6")
                         {
-                            if (item != StrArr[3])
-                            {
-                                Socket receiver = userTable[item] as Socket;
-                                receiver.Send(Encoding.ASCII.GetBytes(sendStr + "###" + StrArr[0]));
-                            }
-                           
+                            Socket receiverSocket = userTable[StrArr[0]] as Socket;
+                            receiverSocket.Send(Encoding.ASCII.GetBytes(sendStr));
                         }
-                            
+                        else
+                        {
+                            foreach (string item in userTable.Keys)
+                            {
+                                if (item != StrArr[3])
+                                {
+                                    Socket receiver = userTable[item] as Socket;
+                                    receiver.Send(Encoding.ASCII.GetBytes(sendStr + "###" + StrArr[0]));
+                                }
+
+                            }
+                        }
                     }
+                    
 
                     //显示内容
                     text1.Dispatcher.BeginInvoke(
@@ -111,13 +118,13 @@ namespace Enterprise_communication_Server
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            IPAddress[] ipArray;
-            ipArray = Dns.GetHostAddresses(Dns.GetHostName());
-            IPAddress localip = ipArray.First(ip => ip.AddressFamily == AddressFamily.InterNetwork);
-            tcpListener = new TcpListener(IPAddress.Parse("127.0.0.1"), 6002);
+            
+            tcpListener = new TcpListener(IPAddress.Parse(Localip.Text), Convert.ToInt32(Localport.Text));
             tcpListener.Start();
             Start.Content = "监听中";
             Start.IsEnabled = false;
+            Localip.IsEnabled = false;
+            Localport.IsEnabled = false;
             Thread myThread = new Thread(ListenClientConnect);
             myThread.Start();
         }

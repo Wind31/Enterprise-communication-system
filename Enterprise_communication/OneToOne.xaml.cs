@@ -14,6 +14,8 @@ using System.Windows.Shapes;
 using Enterprise_communication_model;
 using Enterprise_communication_BLL;
 using System.Net.Sockets;
+using Microsoft.Win32;
+using System.IO;
 
 namespace Enterprise_communication
 {
@@ -24,7 +26,7 @@ namespace Enterprise_communication
     {
         public User msgsender = new User();
         public User msgreceiver =new User();
-        int n = 0;
+        public int n = 0;
         MessageBLL bll = new MessageBLL();
         List<Message> messages = new List<Message>();
         Socket clientSocket;
@@ -49,15 +51,68 @@ namespace Enterprise_communication
                 UserBLL userBLL = new UserBLL();
                 User temp = null;
                 userBLL.GetUserByID(m.Userid, out temp);
-                string msg = "\n" + temp.Name + "    " + m.Sendtime.ToString() + "\n" + m.Content + "\n";
-                ShowMessage.AppendText(msg);
+                if (m.Sendtype == 3)
+                {
+                    string strArr = m.Content.Substring(m.Content.LastIndexOf('\\') + 1);
+                    string filename = ".\\file\\" + strArr;
+                    string msg = "\n" + temp.Name + "    " + m.Sendtime.ToString() + "\n" + "文件:"+ filename + "\n";
+                    ShowMessage.AppendText(msg);
+                    if (!Directory.Exists(".\\file\\"))
+                    {
+                        Directory.CreateDirectory(".\\file\\");
+                    }
+                    if (!File.Exists(filename))
+                    {
+                        FileStream fs = new FileStream(filename, FileMode.OpenOrCreate, FileAccess.Write);
+                        fs.Write(m.Sendfile, 0, m.Sendfile.Length);
+                        fs.Close();
+                    }
+                }
+                else
+                {
+                    string msg = "\n" + temp.Name + "    " + m.Sendtime.ToString() + "\n" + m.Content + "\n";
+                    ShowMessage.AppendText(msg);
+                }
             }
             ShowMessage.ScrollToEnd();
             msgscroll.ScrollToEnd();
         }
         private void btnSendFile_Click(object sender, RoutedEventArgs e) //发送文件
         {
-
+            OpenFileDialog op = new OpenFileDialog();
+            Nullable<bool> result = op.ShowDialog();
+            if (result == true)
+            {
+                string filename = op.FileName;
+                sendmsg.Text = filename;
+                FileStream fs=new FileStream(@filename, FileMode.Open, FileAccess.Read);
+                long FileSize=fs.Length;
+                byte[] rawData=new byte[FileSize];
+                fs.Read(rawData, 0, (int)FileSize);
+                fs.Close();
+                Message message = new Message();
+                message.Content = sendmsg.Text;
+                message.Userid = msgsender.Id;
+                message.Receiverid = msgreceiver.Id;
+                message.Sendtype = 3;
+                message.Sendtime = DateTime.Now;
+                message.Sendfile = rawData;
+                MessageBLL bLL = new MessageBLL();
+                if (!bLL.SendMessage(message))
+                {
+                    MessageBox.Show("服务器异常");
+                }
+                else
+                {
+                    string strArr = message.Content.Substring(message.Content.LastIndexOf('\\') + 1);
+                    string fname = ".\\file\\" + strArr;
+                    string msg = "\n" + msgsender.Name + "    " + message.Sendtime.ToString() + "\n" + "文件: " + fname + "\n";
+                    ShowMessage.AppendText(msg);
+                    sendmsg.Text = "";
+                    ShowMessage.ScrollToEnd();
+                    msgscroll.ScrollToEnd();
+                }
+            }
         }
 
         private void btnVidio_Click(object sender, RoutedEventArgs e) //视频
@@ -78,6 +133,7 @@ namespace Enterprise_communication
             message.Receiverid = msgreceiver.Id;
             message.Sendtype = 1;
             message.Sendtime = DateTime.Now;
+            message.Sendfile = null;
             MessageBLL bLL = new MessageBLL();
             if (!bLL.SendMessage(message))
             {
@@ -88,6 +144,8 @@ namespace Enterprise_communication
                 string msg = "\n"+msgsender.Name + "    " + message.Sendtime.ToString() + "\n" + message.Content+"\n";
                 ShowMessage.AppendText(msg);
                 sendmsg.Text = "";
+                ShowMessage.ScrollToEnd();
+                msgscroll.ScrollToEnd();
             }
 
         }

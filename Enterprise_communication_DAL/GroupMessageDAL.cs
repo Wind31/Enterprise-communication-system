@@ -14,15 +14,16 @@ namespace Enterprise_communication_DAL
         public int AddMessage(GroupMessage message)
         {
             //sql语句
-            String sql = "INSERT INTO en_groupmsg(e_groupid,e_userid,e_sendtype,e_sendtime,e_msgstate,e_content) " +
-                "VALUES(@groupid,@userid,@sendtype,@sendtime,@msgstate,@content)";
+            String sql = "INSERT INTO en_groupmsg(e_groupid,e_userid,e_sendtype,e_sendtime,e_msgstate,e_content,e_file) " +
+                "VALUES(@groupid,@userid,@sendtype,@sendtime,@msgstate,@content,@file)";
             //参数列表
             MySqlParameter[] param = { new MySqlParameter("@groupid", MySqlDbType.Int32),
             new MySqlParameter("@userid", MySqlDbType.Int32),
             new MySqlParameter("@sendtype", MySqlDbType.Int16),
             new MySqlParameter("@sendtime", MySqlDbType.DateTime),
             new MySqlParameter("@msgstate", MySqlDbType.Int16),
-            new MySqlParameter("@content", MySqlDbType.VarChar)
+            new MySqlParameter("@content", MySqlDbType.VarChar),
+            new MySqlParameter("@file", MySqlDbType.LongBlob)
             };
 
             //参数赋值
@@ -32,6 +33,7 @@ namespace Enterprise_communication_DAL
             param[3].Value = message.Sendtime;
             param[4].Value = message.State;
             param[5].Value = message.Content;
+            param[6].Value = message.Sendfile;
             MySqlDbHelper db = new MySqlDbHelper();
             return db.ExecuteNonQuery(sql, CommandType.Text, param);
         }
@@ -65,6 +67,10 @@ namespace Enterprise_communication_DAL
             message.Sendtime = Convert.ToDateTime(dr["e_sendtime"]);
             message.State = Convert.ToInt32(dr["e_msgstate"]);
             message.Sendtype = Convert.ToInt32(dr["e_sendtype"]);
+            if (dr["e_file"] != DBNull.Value)
+                message.Sendfile = (byte[])dr["e_file"];
+            else
+                message.Sendfile = null;
             return message;
         }
 

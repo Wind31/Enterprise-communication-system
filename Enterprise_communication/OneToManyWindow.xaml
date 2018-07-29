@@ -29,7 +29,7 @@
         <Button Name="btnCheckRe" Content="查看历史消息" Grid.Row="1" Grid.Column="2" HorizontalAlignment="Center" Margin="0.4,6.8,0,3.2" AutomationProperties.IsColumnHeader="True" BorderBrush="{x:Null}" Foreground="#FF0064B2" Background="{x:Null}" RenderTransformOrigin="0.5,0.511" Click="btnCheckRe_Click"  />
         <Button Name="btnBack" Content="返回" Grid.Row="0" Grid.Column="0" HorizontalAlignment="Center" Margin="0.4,6.8,0,3.2" AutomationProperties.IsColumnHeader="True" BorderBrush="{x:Null}" Foreground="White" Background="{x:Null}" RenderTransformOrigin="0.5,0.508"  />
         <Border Grid.Row="6" BorderThickness="1" BorderBrush="Gray" Grid.ColumnSpan="4"  Grid.RowSpan="3"/>
-        <Button Name="btnSendFile" Content="发送文件" Grid.Row="6" Grid.Column="0" VerticalAlignment="top" AutomationProperties.IsColumnHeader="True" BorderBrush="{x:Null}" Foreground="#FF0E0C0C" Background="{x:Null}"  />
+        <Button Name="btnSendFile" Content="发送文件" Grid.Row="6" Grid.Column="0" VerticalAlignment="top" AutomationProperties.IsColumnHeader="True" BorderBrush="{x:Null}" Foreground="#FF0E0C0C" Background="{x:Null}" Click="btnSendFile_Click"  />
         <Button Name="btnSendVidio" Content="多人视频" Grid.Row="6" Grid.Column="1"  VerticalAlignment="top" AutomationProperties.IsColumnHeader="True" BorderBrush="{x:Null}" Foreground="#FF0E0C0C" Background="{x:Null}"  />
 
         <Viewbox Grid.Row="7" Grid.Column="3"  Margin="29.2,40.4,0,36.4" Height="25">
