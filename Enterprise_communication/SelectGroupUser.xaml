@@ -20,22 +20,7 @@
             <Label FontSize="20" MinHeight="40" Foreground="White" HorizontalAlignment="Center">选择用户</Label>
         </StackPanel>
         <TreeView Grid.Row="1" x:Name="departmentTree" ScrollViewer.HorizontalScrollBarVisibility="Auto" ScrollViewer.VerticalScrollBarVisibility="Auto" Margin="10">
-            <!--<TreeView.ItemTemplate>
-                <HierarchicalDataTemplate ItemsSource="{Binding Nodes}">
-                    <StackPanel>
-                        --><!--<Label Content="{Binding Name}" FontSize="20" Foreground="Black" Visibility="{Binding Visibility1}"></Label>--><!--
-                        <CheckBox IsChecked="False"  Checked="CheckBox_Checked">
-                            <StackPanel Orientation="Horizontal">
-                                <Image MaxHeight="80" MaxWidth="80" Source="{Binding Avatar}"  Visibility="{Binding Visibility2}"></Image>
-                                <StackPanel VerticalAlignment="Center">
-                                    <Label Content="{Binding Name}" FontSize="20" Foreground="Black" ></Label>
-                                    <Label Content="{Binding State}" FontSize="20" Foreground="Black" Visibility="{Binding Visibility2}"></Label>
-                                </StackPanel>
-                            </StackPanel>
-                        </CheckBox>
-                    </StackPanel>
-                </HierarchicalDataTemplate>
-            </TreeView.ItemTemplate>-->
+           
         </TreeView>
         <StackPanel Grid.Row="2"  Orientation="Horizontal" HorizontalAlignment="Center" >
             <Label Content="请输入群名称" MaxWidth="200" MinHeight="30" Margin="5"></Label>

@@ -4,17 +4,17 @@
 winexe
 C#
 .cs
-F:\Enterprise_communication_system\Enterprise_communication\Enterprise_communication\obj\Debug\
+F:\Enterprise_communication\Enterprise_communication\obj\Debug\
 Enterprise_communication
 none
 false
 DEBUG;TRACE
-F:\Enterprise_communication_system\Enterprise_communication\Enterprise_communication\App.xaml
+F:\Enterprise_communication\Enterprise_communication\App.xaml
 121110854834
 
-16848177551
-161328719919
+20449806103
+16967552702
 AddUser.xaml;AdmiEditUserInfor.xaml;AdministratorWindow.xaml;AlterUserInf_U.xaml;LoginWindow.xaml;MainWindow.xaml;OneToManyWindow.xaml;OneToOne.xaml;RegisterWindow.xaml;SelectGroupUser.xaml;UserInfo.xaml;UserInf_U.xaml;
 
-False
+True
 

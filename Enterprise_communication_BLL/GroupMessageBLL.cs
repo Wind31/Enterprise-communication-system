@@ -32,7 +32,7 @@ namespace Enterprise_communication_BLL
                 message.State = 0;
                 return false;
             }
-            clientSocket.Send(Encoding.ASCII.GetBytes(text));
+            clientSocket.Send(Encoding.UTF8.GetBytes(text));
             GroupMessageDAL groupmessageDAL = new GroupMessageDAL();
             groupmessageDAL.AddMessage(message);
             return true;

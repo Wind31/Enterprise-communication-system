@@ -69,12 +69,12 @@ namespace Enterprise_communication
                     //通过clientSocket接收数据  
                     int receiveNumber = connection.Receive(result);
                     //把接受的数据从字节类型转化为字符类型
-                    String recStr = Encoding.ASCII.GetString(result, 0, receiveNumber);
+                    String recStr = Encoding.UTF8.GetString(result, 0, receiveNumber);
                     //[0]发送者ID [1]消息内容 [2]消息类型
                     string[] StrArr = System.Text.RegularExpressions.Regex.Split(recStr, "###");
                     if (recStr != string.Empty)
                     {
-                        if (StrArr[2] != "4"&& StrArr[2] != "5"&&StrArr[2] != "6")
+                        if (StrArr[2] != "4" && StrArr[2] != "5" && StrArr[2] != "6")
                         {
                             User chatuser = new User();
                             userbll.GetUserByID(Convert.ToInt32(StrArr[0]), out chatuser);
@@ -101,7 +101,7 @@ namespace Enterprise_communication
                                                 o.ShowMessage.ScrollToEnd();
                                                 o.msgscroll.ScrollToEnd();
                                             }
-                                            
+
                                             break;
                                         }
                                     }
@@ -114,7 +114,7 @@ namespace Enterprise_communication
                                 });
 
                         }
-                        else if(StrArr[3]!=user.Id.ToString())
+                        else if (StrArr[3] != user.Id.ToString())
                         {
                             GroupBLL groupBLL = new GroupBLL();
                             List<Group> groups = new List<Group>();
@@ -128,13 +128,14 @@ namespace Enterprise_communication
                                 (ThreadStart)delegate ()
                                 {
                                     RefreshUser();
+                                    RefreshGroup();
                                     int i;
                                     for (i = 0; i < App.list2.Count; i++)
                                     {
                                         OneToManyWindow o = App.list2[i];
                                         if (o.group.Id == g.Id)
                                         {
-                                            if(StrArr[2] == "6")
+                                            if (StrArr[2] == "6")
                                             {
                                                 o.n = 0;
                                                 o.RefreshGroupMessage();
@@ -200,7 +201,6 @@ namespace Enterprise_communication
             departmentTree.Items.Clear();
             DepartmentsList = deptbll.GetDepartmentsList();
             UserList = userbll.GetUsersList();
-            //this.departmentTree.ItemsSource = GetTrees(0, GetNodes());//数据绑定
             foreach (Department d in DepartmentsList)
             {
                 TreeViewItem item = new TreeViewItem();
@@ -251,11 +251,8 @@ namespace Enterprise_communication
         }
         private void RefreshGroup()
         {
-            for (int i = GroupList.Items.Count - 1; i >= 1; i--)
-            {
+            for (int i = GroupList.Items.Count - 1; i > 0; i--)
                 GroupList.Items.RemoveAt(i);
-            }
-
             GroupBLL groupbll = new GroupBLL();
             GroupsList = groupbll.GetGroupListByUserId(user.Id);
             foreach (Group p in GroupsList)
@@ -282,44 +279,6 @@ namespace Enterprise_communication
             }
         }
 
-        //public List<NodeModel> GetNodes()
-        //{
-        //    List<NodeModel> dplst = new List<NodeModel>();
-        //    int i, j;
-        //    for (i = 0; i < DepartmentsList.Count; i++)
-        //        dplst.Add(new NodeModel() { Id = DepartmentsList[i].Id, Name = DepartmentsList[i].Name, ParentId = 0, Avatar = null, State = string.Empty, Visibility1 = "Visible", Visibility2 = "Collapsed" });
-        //    for (j = 0; j < UserList.Count; j++)
-        //    {
-        //        if (UserList[j].Username == user.Username)
-        //            continue;
-        //        string state = UserList[j].State == 1 ? "在线" : "离线";
-        //        MemoryStream buf = new MemoryStream(UserList[j].Avatar);
-        //        BitmapImage bitmapImage = new BitmapImage();
-        //        bitmapImage.BeginInit();
-        //        bitmapImage.StreamSource = buf;
-        //        bitmapImage.CacheOption = BitmapCacheOption.OnLoad;
-        //        bitmapImage.EndInit();
-        //        buf.Dispose();
-        //        dplst.Add(new NodeModel() { Id = UserList[j].Id, Name = UserList[j].Name, ParentId = UserList[j].Deptid, Avatar = bitmapImage, State = state, Visibility1 = "Collapsed", Visibility2 = "Visible" });
-        //    }
-        //    return dplst;
-        //}
-
-        /// <summary>
-        /// 递归生成树形数据
-        /// </summary>
-        /// <param name="delst"></param>
-        /// <returns></returns>
-        //public List<NodeModel> GetTrees(int parentid, List<NodeModel> nodes)
-        //{
-        //    List<NodeModel> mainNodes = nodes.Where(x => x.ParentId == parentid).ToList<NodeModel>();
-        //    List<NodeModel> otherNodes = nodes.Where(x => x.ParentId != parentid).ToList<NodeModel>();
-        //    foreach (NodeModel dpt in mainNodes)
-        //    {
-        //        dpt.Nodes = GetTrees(dpt.Id, otherNodes);
-        //    }
-        //    return mainNodes;
-        //}
 
         private void Create_Group_Click(object sender, RoutedEventArgs e)
         {
@@ -407,22 +366,6 @@ namespace Enterprise_communication
             RefreshSelf();
         }
     }
-    //public class NodeModel
-    //{
-    //    public List<NodeModel> Nodes { get; set; }
-    //    public NodeModel()
-    //    {
-    //        this.Nodes = new List<NodeModel>();
-    //        this.ParentId = 0;//主节点的父id默认为0
-    //    }
-    //    public int Id { get; set; }//id
-    //    public string Name { get; set; }//部门名称
-    //    public int ParentId { get; set; }//父类id
-    //    public BitmapImage Avatar { get; set; }
-    //    public string State { get; set; }
-    //    public string Visibility1 { get; set; } = "Visible";
-    //    public string Visibility2 { get; set; } = "Collapsed";
-    //}
 
 }
 

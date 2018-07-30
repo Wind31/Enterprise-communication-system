@@ -47,29 +47,7 @@
         <Button Name="btnSendMessage" Content="发送" Grid.Row="7" Grid.Column="2" HorizontalAlignment="Right" VerticalAlignment="Center"  BorderBrush="{x:Null}" Foreground="White" Background="#FF0594D8" Click="btnSendMessage_Click" Margin="0,40.4,0.2,36.4" Width="51" Height="24" />
 
 
-        <!--<Viewbox Grid.Column="3" Grid.Row="1" HorizontalAlignment="Left" Grid.RowSpan="5" Margin="2.8,7,0,3.6"  >
-            <ScrollBar MinWidth="15" RenderTransformOrigin="0.5,0.5" Height="258" Width="17" >
-                <ScrollBar.RenderTransform>
-                    <TransformGroup>
-                        <ScaleTransform ScaleX="-1"/>
-                        <SkewTransform/>
-                        <RotateTransform/>
-                        <TranslateTransform/>
-                    </TransformGroup>
-                </ScrollBar.RenderTransform>
-            </ScrollBar>
-        </Viewbox>
-        <Viewbox Grid.Column="0" HorizontalAlignment="Left"
-                    Grid.RowSpan="7" Grid.ColumnSpan="4" Margin="0">
-            <TextBox HorizontalAlignment="Left"  
-                     TextWrapping="Wrap" Text="xxxxxxxxxxxxxxxxxxxxxxxx" 
-                     VerticalAlignment="Top" 
-                     Background="{x:Null}" BorderBrush="{x:Null}"
-                     />
-
-
-
-        </Viewbox>-->
+       
         <StackPanel Grid.Row="1" HorizontalAlignment="Left" Grid.RowSpan="5" Margin="0" Grid.ColumnSpan="4" MinWidth="695"  >
             <ScrollViewer Name="msgscroll" Margin="0,50,10,50"  Height="245"
                           HorizontalScrollBarVisibility="Disabled" 

@@ -38,7 +38,7 @@ namespace Enterprise_communication_BLL
                 message.State = 0;
                 return false;
             }
-            clientSocket.Send(Encoding.ASCII.GetBytes(text));
+            clientSocket.Send(Encoding.UTF8.GetBytes(text));
             }
             MessageDAL messageDAL = new MessageDAL();
             messageDAL.AddMessage(message);

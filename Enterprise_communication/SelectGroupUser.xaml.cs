@@ -35,13 +35,11 @@ namespace Enterprise_communication
             this.Top = (workHeight - this.Height) / 2;
             this.Left = (workWidth - this.Width) / 2;
             this.user = m.user;
-            //this.departmentTree.ItemsSource = m.GetTrees(0, m.GetNodes());//数据绑定
             selfusername = m.user.Username;
             DeptBLL deptbll = new DeptBLL();
             DepartmentsList = deptbll.GetDepartmentsList();
             UserBLL userbll = new UserBLL();
             UserList = userbll.GetUsersList();
-            //this.departmentTree.ItemsSource = GetTrees(0, GetNodes());//数据绑定
             foreach (Department d in DepartmentsList)
             {
                 TreeViewItem item = new TreeViewItem();

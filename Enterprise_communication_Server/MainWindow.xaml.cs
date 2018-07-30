@@ -60,7 +60,7 @@ namespace Enterprise_communication_Server
                     //通过clientSocket接收数据  
                     int receiveNumber = connection.Receive(result);
                     //把接受的数据从字节类型转化为字符类型
-                    String recStr = Encoding.ASCII.GetString(result, 0, receiveNumber);
+                    String recStr = Encoding.UTF8.GetString(result, 0, receiveNumber);
                     ///以###分隔字符串，StrArr[0]是接收者ID，[1]是发送内容,[2]是消息类型,[3]是发送者ID
                     string[] StrArr = Regex.Split(recStr, "###");
 
@@ -82,7 +82,7 @@ namespace Enterprise_communication_Server
                         if (StrArr[2] != "4" && StrArr[2] != "5" && StrArr[2] != "6")
                         {
                             Socket receiverSocket = userTable[StrArr[0]] as Socket;
-                            receiverSocket.Send(Encoding.ASCII.GetBytes(sendStr));
+                            receiverSocket.Send(Encoding.UTF8.GetBytes(sendStr));
                         }
                         else
                         {
@@ -91,7 +91,7 @@ namespace Enterprise_communication_Server
                                 if (item != StrArr[3])
                                 {
                                     Socket receiver = userTable[item] as Socket;
-                                    receiver.Send(Encoding.ASCII.GetBytes(sendStr + "###" + StrArr[0]));
+                                    receiver.Send(Encoding.UTF8.GetBytes(sendStr + "###" + StrArr[0]));
                                 }
 
                             }

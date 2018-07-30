@@ -28,11 +28,7 @@ namespace Enterprise_communication
 
         }
 
-        //private void EditInfor_Click1(object sender, RoutedEventArgs e)
-        //{
-        //    AlterUserInf_U AU = new AlterUserInf_U();
-        //    AU.Show();
-        //}
+
         private Department DataRowToDepartment(DataRow dr)
         {
             Department department = new Department();

@@ -43,7 +43,7 @@ namespace Enterprise_communication
             Label label = new Label();
             label.Content = "成员列表";
             label.FontSize = 20;
-            //list.Items.Add(label);
+
             memberlist.Items.Add(label);
             foreach (User member in groupmember)
             {
@@ -68,10 +68,10 @@ namespace Enterprise_communication
                 stack.Children.Add(image);
                 stack.Children.Add(membername);
                 memberlist.Items.Add(stack);
-                //list.Items.Add(stack);
+
             }
             RefreshGroupMessage();
-           // memberlist.Items.Add(list);
+
         }
         public void RefreshGroupMessage()
         {

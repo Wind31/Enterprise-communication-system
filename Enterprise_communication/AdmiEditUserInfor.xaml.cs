@@ -94,8 +94,6 @@ namespace Enterprise_communication
                 AvatarPath.Text = file;
                 BitmapImage image = new BitmapImage(new Uri(file));
                 userAvatar.Source = image;
-                //userAvatar.Width = image.Width;
-                //userAvatar.Height = image.Height;
             }
             byte[] img = File.ReadAllBytes(AvatarPath.Text);
             user1.Avatar = img;

@@ -53,8 +53,7 @@ namespace Enterprise_communication
                 AvatarPath.Text = file;
                 BitmapImage image = new BitmapImage(new Uri(file));
                 userAvatar.Source = image;
-                //userAvatar.Width = image.Width;
-                //userAvatar.Height = image.Height;
+
             }
         }
 
@@ -77,7 +76,6 @@ namespace Enterprise_communication
             }
             User user = new User();
             byte[] img = File.ReadAllBytes(AvatarPath.Text);
-            //string fileName = System.IO.Path.GetFileNameWithoutExtension(AvatarPath.Text);
             user.Id = 0;
             user.Deptid=Convert.ToInt32(depName.SelectedIndex);
             user.Worknum = Convert.ToInt32(numName.Text);
