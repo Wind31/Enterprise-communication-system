@@ -28,10 +28,15 @@ namespace Enterprise_communication
             LoadData();
             user1 = user;
         }
+        public void dataGrid1_LoadingRow(object sender, DataGridRowEventArgs e)
+        {
+            e.Row.Header = e.Row.GetIndex() + 1;
+        }
 
         private void LoadData()
         {
             this.dgUsers.ItemsSource = bll.GetAllUsers();
+            dgUsers.LoadingRow += new System.EventHandler<DataGridRowEventArgs>(dataGrid1_LoadingRow); //加载行号
         }
         //查询
         private void btnLook_Click(object sender, RoutedEventArgs e)
@@ -78,7 +83,7 @@ namespace Enterprise_communication
                 editUser.gridUser.DataContext = User;
                 //显示窗口
                 editUser.ShowDialog();
-
+                LoadData();
             }
 
         }
@@ -146,6 +151,6 @@ namespace Enterprise_communication
             MainWindow mainWindow = new MainWindow(user1);
             mainWindow.Show();
         }
+
     }
 }
-

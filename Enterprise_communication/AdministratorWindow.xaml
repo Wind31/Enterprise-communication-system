@@ -56,20 +56,87 @@
         <Button Name="btnExit" ToolTip="退出" Grid.Row="7" Grid.ColumnSpan="1"  Click="btnExit_Click" VerticalAlignment="Bottom" HorizontalAlignment="Left" Margin="2,2,2,2">
             <Image Source="Images/exit.png"></Image>
         </Button>
-        <DataGrid HorizontalAlignment="Stretch" Name="dgUsers" Grid.Column="2" Grid.Row="1" Grid.RowSpan="10" AutoGenerateColumns="False" CanUserAddRows="false">
+        <DataGrid  HorizontalAlignment="Stretch" Name="dgUsers" Grid.Column="2" Grid.Row="1" Grid.RowSpan="11" AutoGenerateColumns="False" CanUserAddRows="false" Grid.ColumnSpan="2" Margin="0.2,32.6,212.6,29.6" >
             <DataGrid.Columns >
-                <DataGridTextColumn Header="工号" MinWidth="240 " Binding="{Binding Worknum}"  IsReadOnly="True"></DataGridTextColumn>
-                <DataGridTextColumn Header="姓名"  MinWidth="240" Binding="{Binding Name}"  IsReadOnly="True"></DataGridTextColumn>
-                <DataGridTextColumn Header="职位" MinWidth="240 "  Binding="{Binding Position}" IsReadOnly="True"></DataGridTextColumn>
-                <DataGridTextColumn Header="电话号码" MinWidth="240 " Binding="{Binding Phone}" IsReadOnly="True"></DataGridTextColumn>
-                <DataGridTextColumn Header="审核状态" MinWidth="240 " Binding="{Binding Check}" IsReadOnly="True"></DataGridTextColumn>
+                <DataGridTextColumn MaxWidth="1" IsReadOnly="True" ></DataGridTextColumn>
+                <DataGridTemplateColumn  Header="工号" Width="*">
+                    <DataGridTemplateColumn.HeaderStyle>
+                        <Style TargetType="DataGridColumnHeader">
+                            <Setter Property="HorizontalContentAlignment" Value="Center"></Setter>
+                        </Style>
+                    </DataGridTemplateColumn.HeaderStyle>
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <TextBlock HorizontalAlignment="Center" Text="{Binding Worknum}"></TextBlock>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+
+                <DataGridTemplateColumn  Header="姓名" Width="*">
+                    <DataGridTemplateColumn.HeaderStyle>
+                        <Style TargetType="DataGridColumnHeader">
+                            <Setter Property="HorizontalContentAlignment" Value="Center"></Setter>
+                        </Style>
+                    </DataGridTemplateColumn.HeaderStyle>
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <TextBlock HorizontalAlignment="Center" Text="{Binding Name}"></TextBlock>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+
+                <DataGridTemplateColumn  Header="职位" Width="*">
+                    <DataGridTemplateColumn.HeaderStyle>
+                        <Style TargetType="DataGridColumnHeader">
+                            <Setter Property="HorizontalContentAlignment" Value="Center"></Setter>
+                        </Style>
+                    </DataGridTemplateColumn.HeaderStyle>
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <TextBlock HorizontalAlignment="Center" Text="{Binding Position}"></TextBlock>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+
+                <DataGridTemplateColumn  Header="电话号码" Width="*">
+                    <DataGridTemplateColumn.HeaderStyle>
+                        <Style TargetType="DataGridColumnHeader">
+                            <Setter Property="HorizontalContentAlignment" Value="Center"></Setter>
+                        </Style>
+                    </DataGridTemplateColumn.HeaderStyle>
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <TextBlock HorizontalAlignment="Center" Text="{Binding Phone}"></TextBlock>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+
+                <DataGridTemplateColumn  Header="审核状态" Width="*">
+                    <DataGridTemplateColumn.HeaderStyle>
+                        <Style TargetType="DataGridColumnHeader">
+                            <Setter Property="HorizontalContentAlignment" Value="Center"></Setter>
+                        </Style>
+                    </DataGridTemplateColumn.HeaderStyle>
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <TextBlock HorizontalAlignment="Center" Text="{Binding Check}"></TextBlock>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
             </DataGrid.Columns>
-            <DataGrid.ColumnHeaderStyle>
-                <Style TargetType="DataGridColumnHeader">
-                    <Setter Property="HorizontalContentAlignment" Value="Center"/>
+            <DataGrid.RowHeaderStyle >
+                <Style TargetType="DataGridRowHeader">
+                    <Setter Property="Background" Value="LightBlue" />
                     <Setter Property="Height" Value="30"/>
+                    <Setter Property="Width" Value="40"/>
+                    <Style.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="Background" Value="LightGray"/>
+                            <Setter Property="Foreground" Value="Green"/>
+                        </Trigger>
+                    </Style.Triggers>
                 </Style>
-            </DataGrid.ColumnHeaderStyle>
+            </DataGrid.RowHeaderStyle>
             <DataGrid.RowStyle>
                 <Style TargetType="DataGridRow">
                     <Setter Property="Background" Value="LightBlue" />
